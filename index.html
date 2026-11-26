@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMAF IT | أنظمة إدارة لمراكز الصيانة والشركات الصغيرة</title>
+<meta name="description" content="أنظمة برمجية على مقاس شغلك: تسجيل الطلبات، متابعة الفنيين، وتقارير واضحة. نسخة تجريبية قبل أي دفع.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Readex+Pro:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#EEF1EC;
+  --paper:#FFFFFF;
+  --ink:#17212B;
+  --muted:#4B5866;
+  --line:#D3DAD2;
+  --accent:#1F5FBF;
+  --accent-ink:#FFFFFF;
+  --amber:#8A5300;
+  --amber-bg:#FCEBCB;
+  --green:#14683F;
+  --green-bg:#D9F0E2;
+  --new-bg:#E3E8EE;
+  --radius:999px;
+  --r-lg:22px;
+  --deep:#0B1220;
+  --head:"Readex Pro","IBM Plex Sans Arabic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--ground:#0E141B;--paper:#161E27;--ink:#E8EDF2;--muted:#A3AFBC;--line:#26313D;--accent:#6AA3FF;--accent-ink:#07111F;
+    --amber:#F2B65C;--amber-bg:#3A2A0E;--green:#6FD3A0;--green-bg:#10301F;--new-bg:#243040}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;font-size:18px;line-height:1.8}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* header */
+.bar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 0}
+.mark{display:inline-block;width:14px;height:14px;border-radius:4px;background:var(--accent);margin-inline-end:10px;vertical-align:-1px}
+.brand{font-family:var(--head);font-weight:700;font-size:21px;text-decoration:none;color:var(--ink)}
+.nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:16px}
+.nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:700;padding:14px 26px;border-radius:var(--radius);border:2px solid var(--accent);font-size:17px;font-family:inherit;cursor:pointer}
+.btn:hover{filter:brightness(.92)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--ground);filter:none}
+.nav .btn{color:var(--accent-ink);padding:9px 20px;font-size:16px}
+.nav .btn:hover{color:var(--accent-ink)}
+
+/* hero */
+.hero{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding:40px 0 80px}
+.hero-copy{flex:1 1 420px}
+.hero-copy h1{margin:0 0 22px;font-family:var(--head);font-size:clamp(36px,6vw,68px);line-height:1.25;font-weight:700;letter-spacing:-0.02em}
+.hero-copy p{margin:0 0 28px;color:var(--muted);max-width:30em}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.trust{list-style:none;margin:28px 0 0;padding:0;display:flex;gap:10px 22px;flex-wrap:wrap;font-size:15px;color:var(--muted);font-weight:600}
+.trust li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-inline-end:8px}
+/* live tracker */
+.tracker{flex:1 1 420px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:0 22px 22px;overflow:hidden;box-shadow:0 18px 40px rgba(23,33,43,.10)}
+.chrome{display:flex;gap:6px;align-items:center;margin:0 -22px 18px;padding:12px 22px;background:var(--ground);border-bottom:1px solid var(--line)}
+.chrome i{width:10px;height:10px;border-radius:50%;background:#C5CEC4;display:block}
+.chrome span{margin-inline-start:12px;font-size:13px;color:var(--muted)}
+.prog{height:8px;border-radius:99px;background:var(--new-bg);overflow:hidden;margin:0 0 16px}
+.prog div{height:100%;width:0;background:var(--green);transition:width .35s}
+.tracker h2{margin:0;font-size:18px;font-weight:700}
+.tracker-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px}
+.hint{font-size:14px;color:var(--muted)}
+.counts{display:flex;gap:10px;margin-bottom:16px}
+.count{flex:1;border-radius:var(--radius);padding:10px 12px}
+.count b{display:block;font-size:28px;line-height:1.2}
+.count span{font-size:14px}
+.c-new{background:var(--new-bg)}
+.c-doing{background:var(--amber-bg);color:var(--amber)}
+.c-done{background:var(--green-bg);color:var(--green)}
+.rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.row{border-radius:16px !important;display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:right;font-family:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;cursor:pointer}
+.row:hover{border-color:var(--accent)}
+.row,.tile,.who li,details{color:var(--ink)}
+.row small{display:block;color:var(--muted);font-size:13px;line-height:1.4}
+.pill{flex:none;font-size:13px;font-weight:600;padding:3px 12px;border-radius:99px;transition:background .25s,color .25s}
+.p-new{background:var(--new-bg);color:var(--ink)}
+.p-doing{background:var(--amber-bg);color:var(--amber)}
+.p-done{background:var(--green-bg);color:var(--green)}
+.note{margin:14px 0 0;font-size:13px;color:var(--muted);line-height:1.6}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2.title{margin:0 0 36px;font-family:var(--head);font-size:clamp(28px,4vw,38px);line-height:1.35;font-weight:700}
+.service{display:flex;flex-wrap:wrap;gap:12px 40px;padding:26px 0;border-bottom:1px solid var(--line)}
+.service:first-of-type{padding-top:0}
+.service h3{flex:1 1 260px;margin:0;font-size:22px;line-height:1.5}
+.service p{flex:2 1 420px;margin:0;color:var(--muted)}
+
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.tile{grid-column:span 3;border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;gap:10px;background:var(--paper);border:1px solid var(--line)}
+.tile h3{margin:0;font-family:var(--head);font-size:23px;line-height:1.5}
+.tile p{margin:0;color:var(--muted)}
+.t1{grid-column:span 4;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.t1 h3{font-size:clamp(26px,3.4vw,36px)}
+.t1 p{color:inherit;opacity:.92;max-width:26em}
+.t2{grid-column:span 2}
+.t3{grid-column:span 2;background:var(--deep);border-color:var(--deep);color:#fff}
+.t3 p{color:#C9D2DC}
+.t4{grid-column:span 4}
+@media (max-width:760px){.bento{grid-template-columns:1fr}.tile,.t1,.t2,.t3,.t4{grid-column:auto}}
+.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:32px}
+.steps li{flex:1 1 260px;counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--ground);font-weight:700;margin-bottom:12px}
+.steps b{display:block;font-size:20px}
+.steps span{color:var(--muted)}
+details{border-bottom:1px solid var(--line);padding:18px 0;max-width:800px}
+summary{cursor:pointer;font-weight:700;font-size:19px;list-style-position:inside}
+details p{margin:10px 0 0;color:var(--muted)}
+.cta{background:var(--deep);color:#fff;border-top:0}
+.cta h2{margin:0 0 12px;font-family:var(--head);font-size:clamp(28px,4vw,40px);line-height:1.35}
+.cta p{margin:0 0 28px;color:#C9D2DC;max-width:32em}
+.cta .btn{background:#fff;color:var(--ink);border-color:#fff}
+.cta .btn:hover{background:#DCE3EA;border-color:#DCE3EA}
+.cta .btn.ghost{background:transparent;color:#fff;border-color:#8896A6}
+.cta .btn.ghost:hover{background:#fff;color:var(--ink)}
+
+.who{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+.who li{background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:8px 20px;font-weight:600}
+.about{display:flex;flex-wrap:wrap;gap:32px 56px;align-items:flex-start}
+.about p{flex:2 1 380px;margin:0;color:var(--muted);max-width:36em}
+.stack{flex:1 1 220px;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.stack li{border:1px solid var(--ink);border-radius:99px;padding:2px 12px;font-weight:600;font-size:15px}
+form{display:flex;flex-wrap:wrap;gap:14px;max-width:760px}
+.field{flex:1 1 220px;display:flex;flex-direction:column;gap:6px}
+.field label{font-size:15px;font-weight:600;color:#DCE3EA}
+.field input{font-family:inherit;font-size:17px;padding:12px 14px;border-radius:var(--radius);border:1.5px solid #8896A6;background:#fff;color:var(--ink)}
+.field input:focus-visible{outline:3px solid #8DB5F0}
+form .btn{flex:1 1 100%;text-align:center}
+.hint-cta{margin:20px 0 0;font-size:16px;color:#C9D2DC}
+footer{background:var(--deep);color:#9AA7B5;font-size:14px;padding:0 0 32px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pill,.prog div{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="wrap top">
+  <a class="brand" href="#"><span class="mark"></span>SMAF IT</a>
+  <nav class="nav" aria-label="التنقل الرئيسي">
+    <a href="#services">الخدمات</a>
+    <a href="#process">طريقة الشغل</a>
+    <a href="#about">عني</a>
+    <a href="#faq">أسئلة شائعة</a>
+    <a class="btn" href="#contact">تواصل معي</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <div class="hero-copy">
+    <h1>طلبات الصيانة كلها في مكان واحد، وكل فني عارف شغله</h1>
+    <p>بصمم وأبرمج لك نظام على مقاس مركزك بـ Python وDjango، بدل الورق والواتساب والإكسيل. تشوفه شغال على بياناتك قبل ما تدفع أي حاجة.</p>
+    <div class="actions">
+      <a class="btn" href="#contact">اطلب نسخة تجريبية مجانية</a>
+      <a class="btn ghost" href="#services">اعرف الخدمات</a>
+    </div>
+    <ul class="trust"><li>نسخة تجريبية مجانية</li><li>بدون أي التزام</li><li>دعم بعد التسليم</li></ul>
+  </div>
+
+  <div class="tracker" aria-labelledby="tr-title">
+    <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>نظام إدارة الطلبات</span></div>
+    <div class="tracker-head">
+      <h2 id="tr-title">لوحة الطلبات</h2>
+      <span class="hint">بتتحدث لوحدها، أو اضغط على أي طلب</span>
+    </div>
+    <div class="counts">
+      <div class="count c-new"><b id="n-new">0</b><span>جديد</span></div>
+      <div class="count c-doing"><b id="n-doing">0</b><span>تحت التنفيذ</span></div>
+      <div class="count c-done"><b id="n-done">0</b><span>خلص</span></div>
+    </div>
+    <div class="prog" aria-hidden="true"><div id="bar"></div></div>
+    <ul class="rows" id="rows"></ul>
+    <p class="note">بيانات تجريبية للتوضيح فقط. النظام الحقيقي بيتعمل على بيانات شغلك.</p>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <h2 class="title">إيه اللي أقدر أعمله لك</h2>
+    <div class="bento">
+      <div class="tile t1"><h3>نظام طلبات وحجوزات</h3><p>تسجيل كل طلب بحالته، وتعيين الفني المسؤول، ومتابعة العميل لحد ما الشغل يخلص، من غير ورق ولا رسايل ضايعة.</p></div>
+      <div class="tile t2"><h3>لوحة تحكم</h3><p>الطلبات الجديدة والمتأخرة وأداء كل فني قدامك على طول.</p></div>
+      <div class="tile t3"><h3>بوت واتساب وتيليجرام</h3><p>يرد على العملاء ويسجّل الطلبات تلقائي حتى وانت مش قدام الموبايل.</p></div>
+      <div class="tile t4"><h3>تقارير جاهزة</h3><p>ملخصات Excel وPDF تبعتها للمحاسب أو الشريك من غير تجميع يدوي.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <h2 class="title">مناسب لأي شغل بيستقبل طلبات وبيتابع عملاء</h2>
+    <ul class="who"><li>مراكز الصيانة</li><li>الخدمات المنزلية</li><li>العيادات والمراكز الطبية</li><li>الصالونات</li><li>شركات الشحن والتوصيل</li><li>المكاتب والشركات الصغيرة</li></ul>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2 class="title">بنشتغل على 3 خطوات</h2>
+    <ol class="steps">
+      <li><b>نتكلم عن شغلك</b><span>تحكيلي بتشتغل إزاي وإيه اللي بيتعبك.</span></li>
+      <li><b>أوريك نسخة تجريبية</b><span>تشوف النظام على شغلك قبل أي دفع.</span></li>
+      <li><b>أسلّم وأدرّب فريقك</b><span>النظام يشتغل عندك وأفضل جنبك للدعم والتعديلات.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="title">مين اللي هيشتغل معاك</h2>
+    <div class="about">
+      <p>أنا مبرمج وصاحب SMAF IT، بشتغل بـ Python وDjango. بتعامل مع صاحب الشغل مباشرة: بسمع منه، وبعمل النظام على مقاس شغله، وبفضل متاح بعد التسليم للدعم والتعديلات. مفيش وسيط ومفيش وعود فاضية، النسخة التجريبية هي اللي بتتكلم.</p>
+      <ul class="stack" aria-label="التقنيات المستخدمة"><li>Python</li><li>Django</li><li>واتساب</li><li>تيليجرام</li><li>تقارير Excel</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 class="title">أسئلة شائعة</h2>
+    <details>
+      <summary>محتاج أفهم في البرمجة عشان أستخدمه؟</summary>
+      <p>لأ. النظام بيتعمل بحيث تستخدمه من أول يوم، وبدرّبك انت والفنيين عليه.</p>
+    </details>
+    <details>
+      <summary>إمتى أشوف النسخة التجريبية؟</summary>
+      <p>بعد ما نتكلم عن شغلك نحدد ميعاد قريب، وتشوفها من غير أي التزام.</p>
+    </details>
+    <details>
+      <summary>السعر كام؟</summary>
+      <p>بيتحدد حسب احتياج شغلك. هقولك سعر واضح بعد النسخة التجريبية.</p>
+    </details>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>جاهز تنظّم شغلك؟</h2>
+    <p>ابعتلي رسالة وهوريك نسخة تجريبية على شغلك في 10 دقايق، من غير أي التزام.</p>
+    <form id="lead" novalidate>
+      <div class="field"><label for="f-name">اسمك</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="f-biz">نوع شغلك</label><input id="f-biz" name="biz" placeholder="مثال: مركز صيانة" required></div>
+      <button class="btn" type="submit">ابعت الطلب على واتساب</button>
+    </form>
+    <p class="hint-cta">أو كلمني مباشرة على <a data-wa href="#" style="color:#fff">واتساب</a> أو على <a href="mailto:tyer2265@gmail.com" style="color:#fff">tyer2265@gmail.com</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> SMAF IT. جميع الحقوق محفوظة.</div>
+</footer>
+
+<script>
+(function () {
+  // غيّر الرقم هنا فقط: صيغة دولية بدون + أو أصفار، مثال مصر: 201001234567
+  var WA = "201004869385";
+  function wa(text) { return "https://wa.me/" + WA + "?text=" + encodeURIComponent(text); }
+  document.querySelectorAll("a[data-wa]").forEach(function (a) {
+    a.href = wa("السلام عليكم، عايز أشوف نسخة تجريبية");
+  });
+  var form = document.getElementById("lead");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var n = form.name.value.trim(), b = form.biz.value.trim();
+    if (!n || !b) { (n ? form.biz : form.name).focus(); return; }
+    window.open(wa("السلام عليكم، أنا " + n + " وعندي " + b + ". عايز أشوف نسخة تجريبية."), "_blank", "noopener");
+  });
+  var STATES = ["new", "doing", "done"];
+  var LABELS = { new: "جديد", doing: "تحت التنفيذ", done: "خلص" };
+  var data = [
+    { t: "صيانة تكييف", s: "مدينة نصر", st: "doing" },
+    { t: "سباكة مطبخ", s: "المعادي", st: "new" },
+    { t: "كهرباء شقة", s: "الجيزة", st: "done" },
+    { t: "تصليح غسالة", s: "الهرم", st: "new" }
+  ];
+  var list = document.getElementById("rows");
+
+  function render() {
+    list.innerHTML = "";
+    var c = { new: 0, doing: 0, done: 0 };
+    data.forEach(function (r, i) {
+      c[r.st]++;
+      var li = document.createElement("li");
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "row";
+      b.setAttribute("aria-label", r.t + "، الحالة: " + LABELS[r.st] + ". اضغط لتغيير الحالة");
+      b.innerHTML = "<span>" + r.t + "<small>" + r.s + "</small></span>" +
+        "<span class=\"pill p-" + r.st + "\">" + LABELS[r.st] + "</span>";
+      b.addEventListener("click", function () {
+        clearInterval(timer);
+        r.st = STATES[(STATES.indexOf(r.st) + 1) % STATES.length];
+        render();
+        list.querySelectorAll(".row")[i].focus();
+      });
+      li.appendChild(b);
+      list.appendChild(li);
+    });
+    document.getElementById("n-new").textContent = c.new;
+    document.getElementById("n-doing").textContent = c.doing;
+    document.getElementById("n-done").textContent = c.done;
+    document.getElementById("bar").style.width = Math.round(c.done / data.length * 100) + "%";
+  }
+  var timer, k = 0;
+  render();
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    timer = setInterval(function () {
+      var r = data[k % data.length];
+      r.st = STATES[(STATES.indexOf(r.st) + 1) % STATES.length];
+      k++;
+      render();
+    }, 2200);
+  }
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

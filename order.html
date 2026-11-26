@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صنايعي | اطلب صنايعي موثوق يجيلك لحد البيت</title>
+<style>
+:root{
+  --navy:#14213D; --navy2:#1E355E; --orange:#FF7B00; --amber:#FFB800; --cream:#FFF6EC; --paper:#FFFFFF;
+  --ink:#14213D; --muted:#6B7280; --line:#F0DCC5; --green:#1FA855; --soft:#FFF0D9;
+}
+*{box-sizing:border-box;font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+body{margin:0;background:var(--cream);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+.top{position:sticky;top:0;z-index:10;background:rgba(255,246,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1120px;margin:auto;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;gap:10px;align-items:center;font-weight:900;font-size:22px}
+.logo-mark{width:42px;height:42px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:22px;box-shadow:0 8px 20px rgba(20,33,61,.25)}
+.logo small{display:block;font-size:11px;letter-spacing:2px;color:var(--orange);font-weight:900}
+.pill{background:var(--green);color:#fff;padding:8px 14px;border-radius:999px;font-weight:800;font-size:13px;display:flex;gap:6px;align-items:center}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 62%,#2A4A7A 100%);color:#fff;overflow:hidden;position:relative}
+.hero-in{max-width:1120px;margin:auto;padding:34px 16px 30px;display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;position:relative;z-index:2}
+@media(max-width:800px){.hero-in{grid-template-columns:1fr}}
+.hero h1{font-size:44px;line-height:1.15;margin:0}
+@media(max-width:800px){.hero h1{font-size:33px}}
+.hero h1 em{font-style:normal;color:var(--amber);position:relative;white-space:nowrap}
+.hero h1 em:after{content:"";position:absolute;right:0;left:0;bottom:2px;height:8px;background:rgba(255,184,0,.35);border-radius:99px;z-index:-1}
+.hero p{color:#D9E2EC;font-size:17px;line-height:1.8;margin:14px 0 0;max-width:540px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:9px 13px;border-radius:999px;font-weight:700;font-size:14px}
+.hero-card{background:#fff;color:var(--ink);border-radius:22px;padding:20px;box-shadow:0 20px 45px rgba(0,0,0,.25);border:1px solid #FFE8C2}
+.hero-card .head{display:flex;justify-content:space-between;align-items:center}
+.hero-card h3{margin:0;font-size:21px}
+.hero-card .rate{background:var(--soft);color:#9A4A00;padding:6px 10px;border-radius:999px;font-weight:900}
+.hero-card ul{list-style:none;padding:0;margin:14px 0 0;line-height:2.05;font-weight:700}
+.hero-card li b{color:var(--orange)}
+.hero-card .mini{margin-top:14px;background:var(--navy);color:#fff;padding:12px;border-radius:14px;display:flex;justify-content:space-between;align-items:center;font-weight:800}
+.hero-card .mini span:last-child{color:var(--amber)}
+.wrap{max-width:1120px;margin:auto;padding:22px 16px 10px}
+.section-title{display:flex;justify-content:space-between;align-items:end;margin:6px 0 12px}
+.section-title h2{margin:0;font-size:26px}
+.section-title p{margin:0;color:var(--muted)}
+.search{width:100%;padding:16px 18px;border-radius:16px;border:2px solid var(--line);background:#fff;font-size:16px;outline:none}
+.search:focus{border-color:var(--orange)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}
+.trade{background:var(--paper);border:2px solid #F3E2C8;border-radius:20px;padding:18px 10px 14px;text-align:center;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
+.trade:hover{transform:translateY(-4px);border-color:var(--orange)}
+.trade.active{border-color:var(--orange);background:#FFF7E6;box-shadow:0 14px 30px rgba(255,123,0,.22)}
+.trade.active:after{content:"✓ تم الاختيار";position:absolute;top:10px;left:10px;background:var(--orange);color:#fff;font-size:11px;font-weight:900;padding:4px 8px;border-radius:999px}
+.trade-img{background:#FFE8C2;width:100%;height:130px;object-fit:cover;border-radius:14px;display:block;margin-bottom:10px}
+.trade{padding:10px 10px 14px}
+@media(max-width:800px){.trade-img{background:#FFE8C2;height:110px}}
+.trade b{display:block;font-size:17px}
+.trade small{color:var(--muted);display:block;margin-top:4px}
+.trade .price{color:var(--orange);font-weight:900;margin-top:6px;display:block}
+.urg{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.urg button{flex:1;padding:13px;border:2px solid #F3E2C8;background:#fff;border-radius:14px;font-weight:800;cursor:pointer;font-size:15px}
+.urg button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.form-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:18px;align-items:start}
+@media(max-width:850px){.form-wrap{grid-template-columns:1fr}}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 12px 30px rgba(20,33,61,.08)}
+.form-card h2{margin:0;font-size:24px}
+.form-card>p{margin:6px 0 0;color:var(--muted)}
+label{display:block;margin:14px 0 6px;font-weight:800;font-size:14px}
+input,textarea{width:100%;padding:14px;border:2px solid #EDE0CC;border-radius:14px;font-size:16px;background:#FFFCF7;outline:none}
+input:focus,textarea:focus{border-color:var(--orange)}
+textarea{min-height:108px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+.chosen{background:linear-gradient(90deg,var(--navy),var(--navy2));color:#fff;padding:13px;border-radius:14px;font-weight:800;text-align:center;margin-top:16px}
+.chosen span{color:var(--amber)}
+.cta{width:100%;margin-top:16px;padding:17px;border:0;border-radius:16px;background:linear-gradient(90deg,var(--orange),#FF9A2E);color:#fff;font-size:19px;font-weight:900;cursor:pointer;box-shadow:0 14px 28px rgba(255,123,0,.35)}
+.cta:active{transform:scale(.98)}
+.secure{text-align:center;color:var(--muted);font-size:13px;margin-top:10px}
+.side{display:flex;flex-direction:column;gap:14px}
+.review{background:var(--navy);color:#fff;border-radius:24px;padding:20px}
+.review h3{margin:0}
+.review .stars{color:var(--amber);font-size:20px;margin:8px 0}
+.review p{color:#D9E2EC;line-height:1.7;margin:0}
+.review b{color:#fff}
+.guarantee{background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px}
+.guarantee h3{margin:0}
+.guarantee ul{padding:0;list-style:none;line-height:2.1;font-weight:700;margin:10px 0 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 26px}
+@media(max-width:750px){.steps{grid-template-columns:1fr}}
+.step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;position:relative;overflow:hidden}
+.step:before{content:"";position:absolute;top:0;right:0;left:0;height:5px;background:linear-gradient(90deg,var(--orange),var(--amber))}
+.num{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900;font-size:18px}
+.step p{color:var(--muted);line-height:1.7;margin:8px 0 0}
+footer{text-align:center;color:#8A7A66;padding:0 0 30px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="top"><div class="top-in">
+<div class="logo"><div class="logo-mark">🔧</div><div>صنايعي<small>SANAYEI • اطلب بثقة</small></div></div>
+<div class="pill"><span>●</span> متاح دلوقتي</div>
+</div></div>
+
+<div class="hero"><div class="hero-in">
+<div>
+<h1>صنايعي <em>موثوق</em><br>يجيلك لحد البيت<br>في أسرع وقت</h1>
+<p>من غير لف ولا تدوير. اختار الصنايعي، اكتب مشكلتك، واحنا هنوصلك بأقرب حد شاطر ومضمون — والسعر واضح قبل ما نبدأ.</p>
+<div class="chips"><div class="chip">⚡ رد في دقايق</div><div class="chip">⭐ تقييم 4.9 من العملاء</div><div class="chip">💰 سعر واضح</div></div>
+</div>
+<div class="hero-card">
+<div class="head"><h3>ليه تطلب من هنا؟</h3><div class="rate">⭐ 4.9</div></div>
+<ul>
+<li><b>✓</b> صنايعي مضمون ومجرب قبل كده</li>
+<li><b>✓</b> طلبك بيوصلنا واتساب على طول</li>
+<li><b>✓</b> بنتابع معاك لحد ما الشغل يخلص</li>
+</ul>
+<div class="mini"><span>متوسط وقت الرد</span><span>أقل من 10 دقايق</span></div>
+</div>
+</div></div>
+
+<div class="wrap">
+<div class="section-title"><div><h2>اختار نوع الصنايعي</h2><p>8 تخصصات جاهزة، اختار اللي محتاجه</p></div></div>
+<input class="search" id="search" placeholder="🔍 دوّر على صنايعي... مثال: سباك، كهربائي، تكييف" oninput="filterTrades()">
+<div class="grid" id="grid">
+<div class="trade" data-v="سباك" data-k="سباك ميه حنفية"><div class="trade-img" style="display:grid;place-items:center;font-size:36px;background:linear-gradient(135deg,#FF7B00,#FFB800);color:#fff;font-weight:900;">🔧</div><b>سباك</b><small>حنفيات • مواسير • تسريب</small><span class="price">من 150 ج</span></div>
+<div class="trade" data-v="كهربائي" data-k="كهربائي كهربا فيش"><div class="trade-img" style="display:grid;place-items:center;font-size:36px;background:linear-gradient(135deg,#FF7B00,#FFB800);color:#fff;font-weight:900

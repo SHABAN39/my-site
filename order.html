@@ -118,5 +118,82 @@ footer{text-align:center;color:#8A7A66;padding:0 0 30px;font-size:13px}
 <div class="section-title"><div><h2>اختار نوع الصنايعي</h2><p>8 تخصصات جاهزة، اختار اللي محتاجه</p></div></div>
 <input class="search" id="search" placeholder="🔍 دوّر على صنايعي... مثال: سباك، كهربائي، تكييف" oninput="filterTrades()">
 <div class="grid" id="grid">
-<div class="trade" data-v="سباك" data-k="سباك ميه حنفية"><div class="trade-img" style="display:grid;place-items:center;font-size:36px;background:linear-gradient(135deg,#FF7B00,#FFB800);color:#fff;font-weight:900;">🔧</div><b>سباك</b><small>حنفيات • مواسير • تسريب</small><span class="price">من 150 ج</span></div>
-<div class="trade" data-v="كهربائي" data-k="كهربائي كهربا فيش"><div class="trade-img" style="display:grid;place-items:center;font-size:36px;background:linear-gradient(135deg,#FF7B00,#FFB800);color:#fff;font-weight:900
+<div class="trade" data-v="سباك" data-k="سباك ميه حنفية"><img class="trade-img" src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=600&auto=format&fit=crop" alt="صنايعي" loading="lazy" onerror="this.style.display='none'"><b>سباك</b><small>حنفيات • مواسير • تسريب</small><span class="price">من 150 ج</span></div>
+<div class="trade" data-v="كهربائي" data-k="كهربائي كهربا فيش"><img class="trade-img" src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=600&auto=format&fit=crop" alt="صنايعي" loading="lazy" onerror="this.style.display='none'"><b>كهربائي</b><small>فيش • إضاءة • لوحات</small><span class="price">من 150 ج</span></div>
+<div class="trade" data-v="نجار" data-k="نجار خشب باب شباك"><img class="trade-img" src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=600&auto=format&fit=crop" alt="صنايعي" loading="lazy" onerror="this.style.display='none'"><b>نجار</b><small>أبواب • شبابيك • موبيليا</small><span class="price">من 200 ج</span></div>
+<div class="trade" data-v="نقاش" data-k="نقاش دهان حيطه"><img class="trade-img" src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=600&auto=format&fit=crop" alt="صنايعي" loading="lazy" onerror="this.style.display='none'"><b>نقاش</b><small>دهانات • معجون • ديكور</small><span class="price">حسب المساحة</span></div>
+<div class="trade" data-v="فني تكييف" data-k="تكييف تبريد"><img class="trade-img" src="https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=600&auto=format&fit=crop" alt="صنايعي" loading="lazy" onerror="this.style.display='none'"><b>فني تكييف</b><small>تركيب • صيانة • شحن</small><span class="price">من 200 ج</span></div>
+<div class="trade" data-v="حداد" data-k="حداد حديد بوابه"><img class="trade-img" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop" alt="صنايعي" loading="lazy" onerror="this.style.display='none'"><b>حداد</b><small>بوابات • حديد • لحام</small><span class="price">حسب الشغل</span></div>
+<div class="trade" data-v="فني دش" data-k="دش ستالايت رسيفر"><img class="trade-img" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=600&auto=format&fit=crop" alt="صنايعي" loading="lazy" onerror="this.style.display='none'"><b>فني دش</b><small>تركيب • ضبط إشارة</small><span class="price">من 120 ج</span></div>
+<div class="trade" data-v="أخرى" data-k="اخري اخرى"><img class="trade-img" src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=80&w=600&auto=format&fit=crop" alt="صنايعي" loading="lazy" onerror="this.style.display='none'"><b>أخرى</b><small>مش لاقي تخصصك؟</small><span class="price">اشرح مشكلتك</span></div>
+</div>
+
+<div class="urg" id="urg">
+<button data-u="مستعجل - عايزه النهارده" onclick="pickUrg(this)">🚨 مستعجل - عايزه النهارده</button>
+<button data-u="عادي - بكرة مناسب" class="active" onclick="pickUrg(this)">🕐 عادي - بكرة مناسب</button>
+<button data-u="حجز - معاد معين" onclick="pickUrg(this)">📅 حجز - معاد معين</button>
+</div>
+
+<div class="form-wrap">
+<div class="form-card">
+<h2>كمل طلبك في 30 ثانية</h2><p>املا البيانات دي وهنكلمك على طول</p>
+<div class="chosen" id="chosen">اخترت: <span>سباك</span> • أولوية: <span id="urgTxt">عادي - بكرة مناسب</span></div>
+<div class="row">
+<div><label>اسمك</label><input id="name" placeholder="اكتب اسمك بالكامل"></div>
+<div><label>رقم تليفونك</label><input id="phone" placeholder="01xxxxxxxxx" inputmode="numeric"></div>
+</div>
+<label>مكانك فين؟</label>
+<input id="place" placeholder="مثال: مدينة بدر - الحي الأول - عمارة 5">
+<label>ايه المشكلة عندك؟</label>
+<textarea id="desc" placeholder="مثال: الحنفية بتنقط بقالها يومين ومحتاج حد ييجي النهارده..."></textarea>
+<button class="cta" onclick="sendOrder()">ابعت الطلب واتساب ✅ وهنتواصل معاك</button>
+<div class="secure">🔒 بياناتك بتتستخدم للتواصل بخصوص الطلب بس • الرسالة بتتفتح واتساب جاهزة</div>
+</div>
+<div class="side">
+<div class="review"><h3>عملائنا قالوا ايه؟</h3><div class="stars">★★★★★ 4.9</div><p>“طلبت سباك الصبح، الضهر كان عندي وخلص الشغل نظيف والسعر زي ما اتفقنا.”</p><p style="margin-top:12px"><b>— أحمد، مدينة بدر</b></p></div>
+<div class="guarantee"><h3>وعدنا ليك 🤝</h3><ul><li>✓ سعر واضح قبل ما نبدأ</li><li>✓ لو الشغل مش عاجبك بنتابع معاك</li><li>✓ صنايعي قريب منك عشان يوصلك بسرعة</li></ul></div>
+</div>
+</div>
+
+<div class="steps">
+<div class="step"><div class="num">1</div><h3>اختار الصنايعي</h3><p>اختار التخصص اللي محتاجه من اللي فوق، وحدد لو مستعجل ولا حجز.</p></div>
+<div class="step"><div class="num">2</div><h3>ابعت الطلب</h3><p>اكتب مكانك ومشكلتك، والطلب يوصلنا واتساب فوراً برسالة جاهزة.</p></div>
+<div class="step"><div class="num">3</div><h3>الصنايعي يجيلك</h3><p>هنكلمك ونأكد معاك، ونبعتلك أقرب صنايعي شاطر ومضمون.</p></div>
+</div>
+</div>
+<footer><a href="https://shaban29.github.io/my-site/">← ارجع للموقع الرئيسي</a> • صنايعي - اطلب صنايعي موثوق</footer>
+<script>
+let selected="سباك", selectedIco="🚰", urg="عادي - بكرة مناسب";
+function pick(el){
+ document.querySelectorAll(".trade").forEach(x=>x.classList.remove("active"));
+ el.classList.add("active");
+ selected=el.dataset.v; selectedIco="";
+ document.getElementById("chosen").innerHTML='اخترت: <span>'+selected+'</span> • أولوية: <span>'+urg+'</span>';
+ document.querySelector(".form-card").scrollIntoView({behavior:"smooth",block:"start"});
+}
+document.querySelectorAll(".trade").forEach(el=>el.onclick=()=>pick(el));
+document.querySelector(".trade").classList.add("active");
+function pickUrg(btn){
+ document.querySelectorAll("#urg button").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active"); urg=btn.dataset.u;
+ document.getElementById("urgTxt").innerText=urg;
+ document.getElementById("chosen").innerHTML='اخترت: <span>'+selected+'</span> • أولوية: <span>'+urg+'</span>';
+}
+function filterTrades(){
+ const q=document.getElementById("search").value.trim();
+ document.querySelectorAll(".trade").forEach(el=>{
+   el.style.display = (!q || el.dataset.k.includes(q) || el.dataset.v.includes(q)) ? "block":"none";
+ });
+}
+function sendOrder(){
+ const name=document.getElementById("name").value.trim();
+ const phone=document.getElementById("phone").value.trim();
+ const place=document.getElementById("place").value.trim();
+ const desc=document.getElementById("desc").value.trim();
+ if(!name||!phone||!place||!desc){alert("اكمل كل البيانات الأول عشان نعرف نوصلك");return;}
+ const msg=`طلب صنايعي جديد 🔧\n\nنوع الصنايعي: ${selected} ${selectedIco}\nالأولوية: ${urg}\nالاسم: ${name}\nرقم التليفون: ${phone}\nالمكان: ${place}\nالمشكلة: ${desc}\n\n---\nمن موقع صنايعي`;
+ window.open("https://wa.me/201004869385?text="+encodeURIComponent(msg),"_blank");
+}
+</script>
+</body>
+</html>

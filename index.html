@@ -74,14 +74,15 @@ nav a:hover{color:var(--ink)}
 .showcase{background:var(--ink);color:#fff}
 .showcase h2{margin-bottom:8px}
 .showcase .sub{color:#b9c7d2;margin-bottom:28px}
-.demos{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .demo{display:block;text-decoration:none;background:#17384f;border:1px solid #2a4d66;border-radius:14px;padding:24px;transition:border-color .2s}
 .demo:hover{border-color:var(--amber)}
 .demo .ico{font-size:34px;display:block;margin-bottom:8px}
 .demo h3{color:#fff}
 .demo p{color:#b9c7d2;font-size:15px;margin-bottom:14px}
 .demo em{font-style:normal;color:var(--amber);font-weight:700}
-@media(max-width:700px){.demos{grid-template-columns:1fr}}
+@media(max-width:900px){.demos{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.demos{grid-template-columns:1fr}}
 
 /* services */
 .grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -150,7 +151,7 @@ footer{background:#0b1c29;color:#8ea2b1;text-align:center;padding:20px;font-size
     <div>
       <h1>طلبات الصيانة كلها في مكان واحد، وكل فني عارف شغله</h1>
       <p class="lead">بصمم وأبرمج لك نظام على مقاس مركزك بـ Python وDjango، بدل الورق والواتساب والإكسيل. تشوفه شغال على بياناتك قبل ما تدفع أي حاجة.</p>
-      <div class="cta-row">
+<div class="cta-row">
         <a class="btn btn-wa" href="#" data-wa="أهلاً، عايز نسخة تجريبية مجانية على شغلي.">اطلب نسخة تجريبية على واتساب</a>
         <a class="btn btn-line" href="#demos">شوف نماذج شغلي</a>
       </div>
@@ -174,17 +175,23 @@ footer{background:#0b1c29;color:#8ea2b1;text-align:center;padding:20px;font-size
   <div class="wrap">
     <h2>شوف شغلي بنفسك</h2>
     <p class="sub">دي نماذج شغالة بتتفتح في صفحة جديدة. جربها زي ما العميل هيجربها.</p>
-    <div class="demos">
-      <a class="demo" href="order.html">
+<div class="demos">
+      <a class="demo" href="order.html" target="_blank" rel="noopener">
         <span class="ico">🔧</span>
         <h3>اطلب صنايعي</h3>
         <p>العميل يسجّل طلب الصيانة، ويوصل لفنيين يقدموا عروضهم عليه.</p>
         <em>افتح النموذج</em>
       </a>
-      <a class="demo" href="restaurant.html">
+      <a class="demo" href="restaurant.html" target="_blank" rel="noopener">
         <span class="ico">🍖</span>
         <h3>بيت المشاوي</h3>
         <p>صفحة مطعم بمنيو وطلب أونلاين، تثبت إن نفس الفكرة بتتفصّل لأي نشاط.</p>
+        <em>افتح النموذج</em>
+      </a>
+      <a class="demo" href="clinic.html" target="_blank" rel="noopener">
+        <span class="ico">🩺</span>
+        <h3>عيادتي للحجز</h3>
+        <p>نموذج حجز موعد مريض: التخصص والفترة والبيانات توصل المركز على واتساب.</p>
         <em>افتح النموذج</em>
       </a>
     </div>
@@ -196,7 +203,7 @@ footer{background:#0b1c29;color:#8ea2b1;text-align:center;padding:20px;font-size
     <h2>إيه اللي أقدر أعمله لك</h2>
     <div class="grid4">
       <div class="card"><h3>نظام طلبات وحجوزات</h3><p>تسجيل كل طلب بحالته، وتعيين الفني المسؤول، ومتابعة العميل لحد ما الشغل يخلص، من غير ورق ولا رسايل ضايعة.</p></div>
-      <div class="card"><h3>لوحة تحكم</h3><p>الطلبات الجديدة والمتأخرة وأداء كل فني قدامك على طول.</p></div>
+<div class="card"><h3>لوحة تحكم</h3><p>الطلبات الجديدة والمتأخرة وأداء كل فني قدامك على طول.</p></div>
       <div class="card"><h3>بوت واتساب وتيليجرام</h3><p>يرد على العملاء ويسجّل الطلبات تلقائي حتى وانت مش قدام الموبايل.</p></div>
       <div class="card"><h3>تقارير جاهزة</h3><p>ملخصات Excel وPDF تبعتها للمحاسب أو الشريك من غير تجميع يدوي.</p></div>
     </div>
@@ -213,7 +220,7 @@ footer{background:#0b1c29;color:#8ea2b1;text-align:center;padding:20px;font-size
       <li><h3>نتكلم عن شغلك</h3><p>احكيلي بتشتغل إزاي وإيه اللي بيتعبك.</p></li>
       <li><h3>أوريك نسخة تجريبية</h3><p>تشوف النظام على شغلك قبل أي دفع.</p></li>
       <li><h3>أسلّم وأدرّب فريقك</h3><p>النظام يشتغل عندك وأفضل جنبك للدعم والتعديلات.</p></li>
-    </ol>
+</ol>
   </div>
 </section>
 
@@ -234,7 +241,7 @@ footer{background:#0b1c29;color:#8ea2b1;text-align:center;padding:20px;font-size
     <h2>أسئلة شائعة</h2>
     <details><summary>محتاج أفهم في البرمجة عشان أستخدمه؟</summary><p>لأ. النظام بيتعمل بحيث تستخدمه من أول يوم، وبدرّبك انت والفنيين عليه.</p></details>
     <details><summary>إمتى أشوف النسخة التجريبية؟</summary><p>بعد ما نتكلم عن شغلك نحدد ميعاد قريب، وتشوفها من غير أي التزام.</p></details>
-    <details><summary>السعر كام؟</summary><!-- TODO: لو عندك سعر بداية اكتبه هنا، مثلاً: "بيبدأ من ... جنيه" -->
+<details><summary>السعر كام؟</summary><!-- TODO: لو عندك سعر بداية اكتبه هنا، مثلاً: "بيبدأ من ... جنيه" -->
       <p>بيتحدد حسب احتياج شغلك. هقولك سعر مكتوب وواضح بعد النسخة التجريبية وقبل ما تدفع أي حاجة.</p></details>
   </div>
 </section>
@@ -255,7 +262,6 @@ footer{background:#0b1c29;color:#8ea2b1;text-align:center;padding:20px;font-size
 
 <footer>© SMAF IT. جميع الحقوق محفوظة.</footer>
 <a class="fab" href="#" data-wa="أهلاً، عايز أعرف أكتر عن النظام.">💬 واتساب</a>
-
 <script>
 const PHONE = "201004869385";
 const waLink = t => "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(t);

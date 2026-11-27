@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>عيادتي | حجز مواعيد العيادات والمراكز الطبية</title>
+<meta name="description" content="نموذج تجريبي احترافي لحجز مواعيد العيادات: اختر التخصص والفترة، وأرسل بياناتك ليصلك تأكيد الموعد على واتساب.">
+<meta name="theme-color" content="#0E6BA8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0E6BA8; --blue-d:#0B5386; --blue-s:#E8F2FB; --navy:#0B2B40;
+  --bg:#F5F9FC; --card:#FFFFFF; --line:#E2EBF3; --line-2:#CBDDEA;
+  --ink:#123047; --muted:#5C7488; --faint:#8499AB;
+  --green:#1FA855; --green-s:#E6F6EE; --amber:#B9850E; --amber-s:#FBF3DD;
+  --r-lg:18px; --r-md:13px; --r-sm:10px;
+  --shadow:0 10px 30px rgba(11,43,64,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer;background:none;border:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ===== Header ===== */
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand-mark{width:40px;height:40px;flex:0 0 40px;border-radius:12px;background:var(--blue);display:grid;place-items:center;color:#fff}
+.brand b{display:block;font-size:18px;font-weight:700;line-height:1.2}
+.brand small{display:block;font-size:11px;color:var(--muted);letter-spacing:.3px}
+.avail{display:flex;align-items:center;gap:7px;background:var(--green-s);color:var(--green);font-weight:600;font-size:13px;padding:8px 14px;border-radius:999px;white-space:nowrap}
+.avail i{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block}
+
+/* ===== Hero ===== */
+.hero{background:linear-gradient(180deg,#E9F3FB 0%,#F5F9FC 58%,#FFFFFF 100%);padding:40px 0 30px}
+.hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center}
+@media(max-width:860px){.hero-in{grid-template-columns:1fr}}
+.kicker{color:var(--blue);font-weight:600;font-size:13.5px;margin-bottom:10px}
+.hero h1{font-size:clamp(28px,4.6vw,40px);line-height:1.3;font-weight:700;color:var(--navy);letter-spacing:-.2px}
+.hero .lead{color:var(--muted);font-size:16.5px;max-width:52ch;margin-top:14px}
+.trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.trust li{list-style:none;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:500;color:var(--ink)}
+.trust svg{width:15px;height:15px;color:var(--green)}
+.hero-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:22px}
+.hero-card h2{font-size:16px;font-weight:700;margin-bottom:14px;color:var(--navy)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:12px 8px;text-align:center}
+.stat b{display:block;font-size:22px;color:var(--blue);font-weight:700}
+.stat span{font-size:12px;color:var(--muted)}
+.assure{list-style:none;display:grid;gap:10px}
+.assure li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink)}
+.assure svg{width:18px;height:18px;flex:0 0 18px;color:var(--blue);margin-top:3px}
+
+/* ===== Sections ===== */
+.section{padding:30px 0 8px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.sec-head h2{font-size:22px;font-weight:700;color:var(--navy)}
+.sec-head p{color:var(--muted);font-size:14px}
+.search-wrap{position:relative}
+.search-wrap svg{position:absolute;top:50%;transform:translateY(-50%);right:16px;width:18px;height:18px;color:var(--faint);pointer-events:none}
+.search{width:100%;padding:14px 46px 14px 16px;border:1.5px solid var(--line-2);border-radius:var(--r-md);background:var(--card);font-size:15px;outline:none}
+.search:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(14,107,168,.12)}
+.search::placeholder{color:var(--faint)}
+
+/* ===== Specialty grid ===== */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.grid{grid-template-columns:1fr 1fr;gap:10px}}
+.spec{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:var(--r-lg);padding:18px 14px;text-align:center;transition:border-color .18s,box-shadow .18s,transform .18s}
+.spec:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.spec.active{border-color:var(--blue);background:#F2F8FE;box-shadow:0 8px 22px rgba(14,107,168,.12)}
+.spec .ico{width:46px;height:46px;margin:0 auto 10px;border-radius:13px;background:var(--blue-s);display:grid;place-items:center;color:var(--blue)}
+.spec .ico svg{width:24px;height:24px}
+.spec b{display:block;font-size:15px;font-weight:600;color:var(--navy)}
+.spec small{display:block;color:var(--muted);font-size:12.5px;margin-top:3px;min-height:34px}
+.spec .price{display:block;color:var(--blue);font-weight:600;font-size:13px;margin-top:8px}
+.spec .badge-check{position:absolute;top:9px;left:9px;width:20px;height:20px;border-radius:50%;background:var(--blue);color:#fff;display:none;place-items:center}
+.spec.active .badge-check{display:grid}
+.spec .badge-check svg{width:12px;height:12px}
+
+/* ===== Period segmented control ===== */
+.period{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+@media(max-width:640px){.period{grid-template-columns:1fr}}
+.pbtn{display:flex;align-items:center;justify-content:center;gap:9px;padding:13px 14px;border:1.5px solid var(--line-2);background:var(--card);border-radius:var(--r-md);font-weight:600;font-size:14px;color:var(--ink)}
+.pbtn svg{width:18px;height:18px;color:var(--muted)}
+.pbtn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.pbtn.active svg{color:#fff}
+
+/* ===== Form ===== */
+.form-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:20px;align-items:start}
+@media(max-width:860px){.form-wrap{grid-template-columns:1fr}}
+.form-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:22px}
+.form-card h2{font-size:19px;font-weight:700;color:var(--navy)}
+.form-card>p{color:var(--muted);font-size:13.5px;margin-top:4px}
+.summary{display:flex;flex-wrap:wrap;gap:8px 18px;background:var(--blue-s);border:1px solid #C9E2F4;border-radius:var(--r-md);padding:12px 14px;margin:16px 0 4px;font-size:14px}
+.summary b{color:var(--blue-d)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+label{display:block;margin:14px 0 6px;font-weight:600;font-size:13.5px;color:var(--navy)}
+input,textarea{width:100%;padding:12.5px 14px;border:1.5px solid var(--line-2);border-radius:var(--r-md);background:#FBFDFE;font-size:15px;outline:none}
+input:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(14,107,168,.12);background:#fff}
+textarea{min-height:96px;resize:vertical}
+.gender{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gbtn{padding:12px;border:1.5px solid var(--line-2);border-radius:var(--r-md);background:var(--card);font-weight:600;font-size:14px}
+.gbtn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.cta{width:100%;margin-top:18px;padding:15px;border:0;border-radius:var(--r-md);background:var(--blue);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:9px}
+.cta:hover{background:var(--blue-d)}
+.cta svg{width:18px;height:18px}
+.secure{display:flex;gap:9px;align-items:flex-start;color:var(--muted);font-size:12.5px;margin-top:12px}
+.secure svg{width:16px;height:16px;flex:0 0 16px;color:var(--faint);margin-top:2px}
+.demo-note{margin-top:12px;background:var(--amber-s);border:1px solid #EBD9A6;color:#7A5A08;border-radius:var(--r-md);padding:11px 14px;font-size:12.5px;line-height:1.6}
+
+/* ===== Sidebar ===== */
+.side{display:grid;gap:16px}
+.review{background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:22px}
+.review .q{font-size:26px;line-height:1;color:#5FA8D3;font-family:Georgia,serif}
+.review h3{font-size:16px;margin:8px 0 10px}
+.stars{display:flex;gap:3px;margin-bottom:10px}
+.stars svg{width:17px;height:17px;fill:#F2C14E}
+.review p{color:#C7D9E6;font-size:14px;line-height:1.8}
+.review b{color:#fff;display:block;margin-top:12px;font-size:13px}
+.guarantee{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px}
+.guarantee h3{font-size:16px;margin-bottom:12px;color:var(--navy)}
+.guarantee ul{list-style:none;display:grid;gap:11px}
+.guarantee li{display:flex;gap:10px;font-size:14px;font-weight:500}
+.guarantee svg{width:18px;height:18px;flex:0 0 18px;color:var(--green);margin-top:3px}
+
+/* ===== Steps ===== */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 20px}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px}
+.step .num{width:36px;height:36px;border-radius:50%;background:var(--blue-s);color:var(--blue);display:grid;place-items:center;font-weight:700;margin-bottom:12px}
+.step h3{font-size:15.5px;color:var(--navy);margin-bottom:5px}
+.step p{color:var(--muted);font-size:13.5px}
+footer{text-align:center;color:var(--faint);font-size:13px;padding:24px 0 34px}
+footer a{color:var(--blue);font-weight:600}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.spec,.pbtn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 21s-7.5-4.8-9.5-9.2C1 7.5 3.2 4 6.6 4c2 0 3.5 1.1 4.4 2.4C11.9 5.1 13.4 4 15.4 4c3.4 0 5.6 3.5 4.1 7.8C19.5 16.2 12 21 12 21z"/><path d="M8.5 11.5h7M12 8v7"/></svg>
+      </div>
+      <div><b>عيادتي</b><small>نظام حجز المواعيد</small></div>
+    </div>
+    <div class="avail"><i></i> مواعيد متاحة اليوم</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <div class="kicker">نموذج تجريبي لمراكز العيادات والخدمات الطبية</div>
+      <h1>احجز موعدك عند التخصص المناسب من غير مكالمات كثيرة</h1>
+      <p class="lead">اختر التخصص والفترة المناسبة، أدخل بياناتك، ويصلك تأكيد الموعد على واتساب — مع كشفية معلنة قبل الحضور.</p>
+      <ul class="trust">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>تأكيد سريع</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>كشفية معلنة</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>خصوصية البيانات</li>
+      </ul>
+    </div>
+    <aside class="hero-card" aria-label="ملخص النظام">
+      <h2>لماذا الحجز عبر النموذج؟</h2>
+      <div class="stats">
+        <div class="stat"><b>8</b><span>تخصصًا</span></div>
+        <div class="stat"><b>أقل من ساعة</b><span>متوسط التأكيد</span></div>
+        <div class="stat"><b>4.9</b><span>تقييم تجريبي</span></div>
+      </div>
+      <ul class="assure">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>التخصص وسعر الكشفية ظاهران قبل الاتصال.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>بيانات الحجز تصل المركز مباشرة بترتيب واضح.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>يصلك تأكيد الموعد برسالة قبل الحضور.</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<main class="wrap">
+  <section class="section">
+    <div class="sec-head"><h2>اختر التخصص</h2><p>ثمانية تخصصات، اختر ما يناسب حالتك</p></div>
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input class="search" id="search" placeholder="ابحث عن تخصص: أسنان، أطفال، جلدية…" oninput="filterSpecs()">
+    </div>
+    <div class="grid" id="grid"></div>
+
+    <div class="period" id="period">
+      <button type="button" class="pbtn active" data-p="صباحي (9 صباحًا – 12 ظهرًا)" onclick="pickPeriod(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5 5l1.6 1.6M17.4 17.4L19 19M19 5l-1.6 1.6M6.6 17.4L5 19"/></svg>
+        صباحي (9 ص – 12 ظ)
+      </button>
+      <button type="button" class="pbtn" data-p="عصري (4 عصرًا – 8 مساءً)" onclick="pickPeriod(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8.2 8.2 0 019.5 4 8.2 8.2 0 1020 14.5z"/></svg>
+        عصري (4 م – 8 م)
+      </button>
+      <button type="button" class="pbtn" data-p="موعد خاص يُحدد بالرسالة" onclick="pickPeriod(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+        موعد خاص
+      </button>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="form-wrap">
+      <form class="form-card" id="book-form" novalidate>
+        <h2>بيانات الحجز</h2>
+        <p>تُستخدم هذه البيانات لتأكيد موعدك فقط.</p>
+        <div class="summary">
+          <span>التخصص: <b id="specTxt">لم يُختار بعد</b></span>
+          <span>الفترة: <b id="periodTxt">صباحي (9 صباحًا – 12 ظهرًا)</b></span>
+        </div>
+        <div class="row">
+          <div><label for="name">الاسم بالكامل</label><input id="name" placeholder="مثال: أحمد محمد"></div>
+          <div><label for="phone">رقم الموبايل</label><input id="phone" placeholder="01xxxxxxxxx" inputmode="numeric" dir="ltr"></div>
+        </div>
+        <div class="row">
+          <div><label for="age">العمر (اختياري)</label><input id="age" placeholder="مثال: 35" inputmode="numeric"></div>
+          <div><label>النوع (اختياري)</label>
+            <div class="gender" id="gender">
+              <button type="button" class="gbtn" data-g="ذكر" onclick="pickGender(this)">ذكر</button>
+              <button type="button" class="gbtn" data-g="أنثى" onclick="pickGender(this)">أنثى</button>
+            </div>
+          </div>
+        </div>
+        <label for="area">المنطقة / أقرب شارع</label>
+        <input id="area" placeholder="مثال: مدينة نصر – شارع مصطفى النحاس">
+        <label for="desc">وصف الحالة باختصار (اختياري)</label>
+        <textarea id="desc" placeholder="مثال: بوجع في الأسنان منذ يومين، وأفضل كشفًا عاجلًا…"></textarea>
+        <button type="button" class="cta" onclick="sendBooking()">
+          تأكيد الحجز عبر واتساب
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </button>
+        <div class="secure">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.8a4 4 0 018 0v2.7"/></svg>
+          <span>البيانات تُستخدم للتواصل الخاص بالحجز فقط؛ الرسالة تُفتح على واتساب جاهزة المرسل.</span>
+        </div>
+        <div class="demo-note">ملحوظة توضيحية: هذه الصفحة نموذج تجريبي لشكل نظام حجز المواعيد؛ البيانات لا تُرسل إلى جهة علاجية حقيقية.</div>
+      </form>
+
+      <aside class="side">
+        <div class="review">
+          <div class="q" aria-hidden="true">“</div>
+          <h3>نموذج تجريبي</h3>
+          <div class="stars" aria-label="تقييم 4.9 من 5">
+            <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg>
+          </div>
+          <p>يوضح كيف يستقبل المركز طلبات المرضى ويرتب المواعيد، بدل المكالمات والملاحظات المبعثرة.</p>
+          <b>— مثال توضيحي</b>
+        </div>
+        <div class="guarantee">
+          <h3>ضوابط الحجز في النظام</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>ميعاد مؤكد برسالة قبل الحضور.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>سعر الكشفية ظاهر مع التخصص.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>إعادة جدولة أو تأكيد بسهولة عبر نفس المحادثة.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head"><h2>خطوات الحجز</h2></div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>اختر التخصص والفترة</h3><p>حدد التخصص المناسب، وهل تفضل موعدًا صباحيًا أم عصريًا.</p></div>
+      <div class="step"><div class="num">2</div><h3>أرسل بياناتك</h3><p>اكتب اسمك ورقمك ومنطقتك، فيصل الطلب عبر رسالة واتساب جاهزة.</p></div>
+      <div class="step"><div class="num">3</div><h3>استلم التأكيد</h3><p>يرد المركز عليك بتأكيد الموعد والعنوان قبل التوجه.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a href="https://shaban39.github.io/my-site/">عودة إلى الموقع الرئيسي</a>
+  &nbsp;·&nbsp; عيادتي — نموذج حجز مواعيد تجريبي
+</footer>
+
+<script>
+const ICONS = {
+  dental:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3.5C6 3.5 4.8 5 4.8 7c0 2.2.7 3.2 1.1 5 .5 2.2.4 6.5.4 6.5s.1 2.4 1.6 2.4c1.3 0 1.3-2.3 1.6-4.1.3-1.6 1.2-2.6 2.5-2.6s2.2 1 2.5 2.6c.3 1.8.3 4.1 1.6 4.1 1.5 0 1.6-2.4 1.6-2.4s-.1-4.3.4-6.5c.4-1.8 1.1-2.8 1.1-5 0-2-1.2-3.5-3.2-3.5c-1.3 0-2 .5-2.9.5S9.3 3.5 8 3.5z"/></svg>',
+  child:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C13.1 2 14 2.9 14 4V8H16V10H14V12H16V14H14V16H16V18H14V20H16V22H14V24H16V26H14V28H16V30H14V32H16V34H14V36H16V38H14V40H16V42H14V44H16V46H14V48H16V50H14V52H16V54H14V56H16V58H14V60H16V62H14V64H16V66H₁₄ V₆₈ H₁₆ V₇₀ H₁₄ V₇₂ H₁₆ V₇₄ H₁₄ V₇₆ H₁₆ V₇八年 H₁₄ V₈₀ H₁₆ V₈₂ H₁₄ V₈₄ H₁₆ V₈六年 H₁₄ Vₓ₀ H₁₆ Vₓ₂ H₁₄ Vₓ₄ H₁₶ Vₓ六年 H₁₄ Vₓ八年 H₁₶ Vₓ₀ H₁₶ Vₓ₂ H₁₶ Vₓ四年 H₁₶ Vₓ六年 H₁₶ Vₓ八年 H₁₶ Vₓ₀ H₁₶ Vₓ₂ H₁₶ Vₓ四年 H₁ textured" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7l3-3m0 0l3 3m-3-3v5m0 0h5m-5 0l-3 3m3-3l-3-3"/></svg>'
+};

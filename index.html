@@ -1,331 +1,308 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SMAF IT | أنظمة إدارة لمراكز الصيانة والشركات الصغيرة</title>
 <meta name="description" content="أنظمة برمجية على مقاس شغلك: تسجيل الطلبات، متابعة الفنيين، وتقارير واضحة. نسخة تجريبية قبل أي دفع.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Readex+Pro:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ground:#EEF1EC;
-  --paper:#FFFFFF;
-  --ink:#17212B;
-  --muted:#4B5866;
-  --line:#D3DAD2;
-  --accent:#1F5FBF;
-  --accent-ink:#FFFFFF;
-  --amber:#8A5300;
-  --amber-bg:#FCEBCB;
-  --green:#14683F;
-  --green-bg:#D9F0E2;
-  --new-bg:#E3E8EE;
-  --radius:999px;
-  --r-lg:22px;
-  --deep:#0B1220;
-  --head:"Readex Pro","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --ink:#10283a; --ink2:#42586a; --paper:#f4f7f9; --white:#fff;
+  --line:#d9e2e8; --amber:#f2b01e; --amber-d:#c98f08; --green:#1f8a5b; --blue:#2467b3;
+  --wa:#1fa855;
 }
-@media (prefers-color-scheme:dark){
-  :root{--ground:#0E141B;--paper:#161E27;--ink:#E8EDF2;--muted:#A3AFBC;--line:#26313D;--accent:#6AA3FF;--accent-ink:#07111F;
-    --amber:#F2B65C;--amber-bg:#3A2A0E;--green:#6FD3A0;--green-bg:#10301F;--new-bg:#243040}
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;font-size:18px;line-height:1.8}
-a{color:var(--accent)}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+h1,h2,h3{line-height:1.35}
+h2{font-size:clamp(24px,4vw,32px);margin-bottom:28px}
+h3{font-size:19px;margin-bottom:6px}
+.btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font:inherit;font-weight:700}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{background:#188a46}
+.btn-line{border-color:var(--ink);color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
 
 /* header */
-.bar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 0}
-.mark{display:inline-block;width:14px;height:14px;border-radius:4px;background:var(--accent);margin-inline-end:10px;vertical-align:-1px}
-.brand{font-family:var(--head);font-weight:700;font-size:21px;text-decoration:none;color:var(--ink)}
-.nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
-.nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:16px}
-.nav a:hover{color:var(--ink)}
-.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:700;padding:14px 26px;border-radius:var(--radius);border:2px solid var(--accent);font-size:17px;font-family:inherit;cursor:pointer}
-.btn:hover{filter:brightness(.92)}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
-.btn.ghost:hover{background:var(--ink);color:var(--ground);filter:none}
-.nav .btn{color:var(--accent-ink);padding:9px 20px;font-size:16px}
-.nav .btn:hover{color:var(--accent-ink)}
+header{position:sticky;top:0;z-index:20;background:rgba(244,247,249,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.logo{font-weight:700;font-size:22px;text-decoration:none;letter-spacing:.5px}
+.logo b{background:var(--amber);padding:0 8px;border-radius:6px;margin-inline-start:2px}
+nav{display:flex;gap:20px;font-size:15px}
+nav a{text-decoration:none;color:var(--ink2)}
+nav a:hover{color:var(--ink)}
+.bar .btn{padding:8px 16px;font-size:15px}
+@media(max-width:760px){nav{display:none}}
 
 /* hero */
-.hero{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding:40px 0 80px}
-.hero-copy{flex:1 1 420px}
-.hero-copy h1{margin:0 0 22px;font-family:var(--head);font-size:clamp(36px,6vw,68px);line-height:1.25;font-weight:700;letter-spacing:-0.02em}
-.hero-copy p{margin:0 0 28px;color:var(--muted);max-width:30em}
-.actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero{padding:48px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(28px,5vw,44px);margin-bottom:16px}
+.hero p.lead{color:var(--ink2);margin-bottom:24px;max-width:46ch}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.ticks{list-style:none;padding:0;display:flex;gap:18px;flex-wrap:wrap;font-size:15px;color:var(--ink2)}
+.ticks li::before{content:"✓";color:var(--green);font-weight:700;margin-inline-end:6px}
+@media(max-width:820px){.hero-grid{grid-template-columns:1fr}}
 
-.trust{list-style:none;margin:28px 0 0;padding:0;display:flex;gap:10px 22px;flex-wrap:wrap;font-size:15px;color:var(--muted);font-weight:600}
-.trust li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-inline-end:8px}
-/* live tracker */
-.tracker{flex:1 1 420px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:0 22px 22px;overflow:hidden;box-shadow:0 18px 40px rgba(23,33,43,.10)}
-.chrome{display:flex;gap:6px;align-items:center;margin:0 -22px 18px;padding:12px 22px;background:var(--ground);border-bottom:1px solid var(--line)}
-.chrome i{width:10px;height:10px;border-radius:50%;background:#C5CEC4;display:block}
-.chrome span{margin-inline-start:12px;font-size:13px;color:var(--muted)}
-.prog{height:8px;border-radius:99px;background:var(--new-bg);overflow:hidden;margin:0 0 16px}
-.prog div{height:100%;width:0;background:var(--green);transition:width .35s}
-.tracker h2{margin:0;font-size:18px;font-weight:700}
-.tracker-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px}
-.hint{font-size:14px;color:var(--muted)}
-.counts{display:flex;gap:10px;margin-bottom:16px}
-.count{flex:1;border-radius:var(--radius);padding:10px 12px}
-.count b{display:block;font-size:28px;line-height:1.2}
-.count span{font-size:14px}
-.c-new{background:var(--new-bg)}
-.c-doing{background:var(--amber-bg);color:var(--amber)}
-.c-done{background:var(--green-bg);color:var(--green)}
-.rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.row{border-radius:16px !important;display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:right;font-family:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;cursor:pointer}
-.row:hover{border-color:var(--accent)}
-.row,.tile,.who li,details{color:var(--ink)}
-.row small{display:block;color:var(--muted);font-size:13px;line-height:1.4}
-.pill{flex:none;font-size:13px;font-weight:600;padding:3px 12px;border-radius:99px;transition:background .25s,color .25s}
-.p-new{background:var(--new-bg);color:var(--ink)}
-.p-doing{background:var(--amber-bg);color:var(--amber)}
-.p-done{background:var(--green-bg);color:var(--green)}
-.note{margin:14px 0 0;font-size:13px;color:var(--muted);line-height:1.6}
+/* dashboard */
+.board{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 8px 28px rgba(16,40,58,.08)}
+.board-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.board-top strong{font-size:17px}
+.board-top small{color:var(--ink2);font-size:13px}
+.counts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.count{border-radius:10px;padding:10px;text-align:center;font-size:13px;color:var(--ink2)}
+.count b{display:block;font-size:26px;color:var(--ink);line-height:1.2}
+.c-new{background:#e8f0fa}.c-run{background:#fdf3d9}.c-done{background:#e2f3ea}
+.reqs{list-style:none;padding:0;display:grid;gap:8px}
+.req{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:start;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;font:inherit;font-size:15px;color:var(--ink)}
+.req:hover{border-color:var(--ink2)}
+.req span small{display:block;color:var(--ink2);font-size:13px}
+.tag{font-size:13px;font-weight:700;padding:2px 10px;border-radius:99px;white-space:nowrap}
+.t-new{background:#d6e5f7;color:var(--blue)}
+.t-run{background:#fbe6ab;color:#7a5600}
+.t-done{background:#c9eadb;color:#14623f}
+.note{font-size:12px;color:var(--ink2);margin-top:12px}
 
-/* sections */
-section{padding:72px 0;border-top:1px solid var(--line)}
-h2.title{margin:0 0 36px;font-family:var(--head);font-size:clamp(28px,4vw,38px);line-height:1.35;font-weight:700}
-.service{display:flex;flex-wrap:wrap;gap:12px 40px;padding:26px 0;border-bottom:1px solid var(--line)}
-.service:first-of-type{padding-top:0}
-.service h3{flex:1 1 260px;margin:0;font-size:22px;line-height:1.5}
-.service p{flex:2 1 420px;margin:0;color:var(--muted)}
+/* showcase */
+.showcase{background:var(--ink);color:#fff}
+.showcase h2{margin-bottom:8px}
+.showcase .sub{color:#b9c7d2;margin-bottom:28px}
+.demos{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.demo{display:block;text-decoration:none;background:#17384f;border:1px solid #2a4d66;border-radius:14px;padding:24px;transition:border-color .2s}
+.demo:hover{border-color:var(--amber)}
+.demo .ico{font-size:34px;display:block;margin-bottom:8px}
+.demo h3{color:#fff}
+.demo p{color:#b9c7d2;font-size:15px;margin-bottom:14px}
+.demo em{font-style:normal;color:var(--amber);font-weight:700}
+@media(max-width:700px){.demos{grid-template-columns:1fr}}
 
-.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.tile{grid-column:span 3;border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;gap:10px;background:var(--paper);border:1px solid var(--line)}
-.tile h3{margin:0;font-family:var(--head);font-size:23px;line-height:1.5}
-.tile p{margin:0;color:var(--muted)}
-.t1{grid-column:span 4;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.t1 h3{font-size:clamp(26px,3.4vw,36px)}
-.t1 p{color:inherit;opacity:.92;max-width:26em}
-.t2{grid-column:span 2}
-.t3{grid-column:span 2;background:var(--deep);border-color:var(--deep);color:#fff}
-.t3 p{color:#C9D2DC}
-.t4{grid-column:span 4}
-@media (max-width:760px){.bento{grid-template-columns:1fr}.tile,.t1,.t2,.t3,.t4{grid-column:auto}}
-.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:32px}
-.steps li{flex:1 1 260px;counter-increment:s}
-.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--ground);font-weight:700;margin-bottom:12px}
-.steps b{display:block;font-size:20px}
-.steps span{color:var(--muted)}
-details{border-bottom:1px solid var(--line);padding:18px 0;max-width:800px}
-summary{cursor:pointer;font-weight:700;font-size:19px;list-style-position:inside}
-details p{margin:10px 0 0;color:var(--muted)}
-.cta{background:var(--deep);color:#fff;border-top:0}
-.cta h2{margin:0 0 12px;font-family:var(--head);font-size:clamp(28px,4vw,40px);line-height:1.35}
-.cta p{margin:0 0 28px;color:#C9D2DC;max-width:32em}
-.cta .btn{background:#fff;color:var(--ink);border-color:#fff}
-.cta .btn:hover{background:#DCE3EA;border-color:#DCE3EA}
-.cta .btn.ghost{background:transparent;color:#fff;border-color:#8896A6}
-.cta .btn.ghost:hover{background:#fff;color:var(--ink)}
+/* services */
+.grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card p{color:var(--ink2);font-size:16px}
+.fit{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.fit span{background:var(--white);border:1px solid var(--line);border-radius:99px;padding:4px 14px;font-size:15px}
+@media(max-width:700px){.grid4{grid-template-columns:1fr}}
 
-.who{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
-.who li{background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:8px 20px;font-weight:600}
-.about{display:flex;flex-wrap:wrap;gap:32px 56px;align-items:flex-start}
-.about p{flex:2 1 380px;margin:0;color:var(--muted);max-width:36em}
-.stack{flex:1 1 220px;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.stack li{border:1px solid var(--ink);border-radius:99px;padding:2px 12px;font-weight:600;font-size:15px}
-form{display:flex;flex-wrap:wrap;gap:14px;max-width:760px}
-.field{flex:1 1 220px;display:flex;flex-direction:column;gap:6px}
-.field label{font-size:15px;font-weight:600;color:#DCE3EA}
-.field input{font-family:inherit;font-size:17px;padding:12px 14px;border-radius:var(--radius);border:1.5px solid #8896A6;background:#fff;color:var(--ink)}
-.field input:focus-visible{outline:3px solid #8DB5F0}
-form .btn{flex:1 1 100%;text-align:center}
-.hint-cta{margin:20px 0 0;font-size:16px;color:#C9D2DC}
-footer{background:var(--deep);color:#9AA7B5;font-size:14px;padding:0 0 32px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pill,.prog div{transition:none}}
+/* process */
+.steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.steps li{counter-increment:s;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--amber);font-weight:700;margin-bottom:10px}
+.steps p{color:var(--ink2);font-size:16px}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* about */
+.about{background:var(--white);border-block:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
+/* TODO: غيّر الحرف ده بصورتك: <img src="me.jpg" alt="صورتي" class="avatar"> */
+.avatar{width:112px;height:112px;border-radius:50%;background:var(--ink);color:var(--amber);display:grid;place-items:center;font-size:40px;font-weight:700;object-fit:cover}
+.about p{color:var(--ink2);margin-bottom:14px;max-width:62ch}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips span{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:2px 12px;font-size:14px}
+@media(max-width:600px){.about-grid{grid-template-columns:1fr}}
+
+/* faq */
+details{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700}
+details p{color:var(--ink2);margin-top:8px;font-size:16px}
+
+/* contact */
+.contact{background:var(--ink);color:#fff;text-align:center}
+.contact p{color:#b9c7d2;margin-bottom:24px}
+form{background:var(--white);color:var(--ink);border-radius:16px;padding:22px;max-width:440px;margin:0 auto 18px;display:grid;gap:12px;text-align:start}
+label{font-size:15px;font-weight:500}
+input{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:10px;font:inherit;margin-top:4px}
+input:focus{border-color:var(--ink);outline:none}
+.alt a{color:var(--amber)}
+footer{background:#0b1c29;color:#8ea2b1;text-align:center;padding:20px;font-size:14px}
+
+/* floating whatsapp */
+.fab{position:fixed;inset-inline-start:16px;bottom:16px;z-index:30;background:var(--wa);color:#fff;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:99px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
 
-<header class="bar"><div class="wrap top">
-  <a class="brand" href="#"><span class="mark"></span>SMAF IT</a>
-  <nav class="nav" aria-label="التنقل الرئيسي">
-    <a href="#services">الخدمات</a>
-    <a href="#process">طريقة الشغل</a>
-    <a href="#about">عني</a>
-    <a href="#faq">أسئلة شائعة</a>
-    <a class="btn" href="#contact">تواصل معي</a>
-  </nav>
-</div></header>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#">SMAF<b>IT</b></a>
+    <nav>
+      <a href="#demos">نماذج شغلي</a>
+      <a href="#services">الخدمات</a>
+      <a href="#process">طريقة الشغل</a>
+      <a href="#about">عني</a>
+      <a href="#faq">أسئلة شائعة</a>
+    </nav>
+    <a class="btn btn-wa" href="#" data-wa="أهلاً، عايز أعرف أكتر عن النظام وأشوف نسخة تجريبية.">واتساب</a>
+  </div>
+</header>
 
 <main>
-<div class="wrap hero">
-  <div class="hero-copy">
-    <h1>طلبات الصيانة كلها في مكان واحد، وكل فني عارف شغله</h1>
-    <p>بصمم وأبرمج لك نظام على مقاس مركزك بـ Python وDjango، بدل الورق والواتساب والإكسيل. تشوفه شغال على بياناتك قبل ما تدفع أي حاجة.</p>
-    <div class="actions">
-      <a class="btn" href="#contact">اطلب نسخة تجريبية مجانية</a>
-      <a class="btn ghost" href="#services">اعرف الخدمات</a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>طلبات الصيانة كلها في مكان واحد، وكل فني عارف شغله</h1>
+      <p class="lead">بصمم وأبرمج لك نظام على مقاس مركزك بـ Python وDjango، بدل الورق والواتساب والإكسيل. تشوفه شغال على بياناتك قبل ما تدفع أي حاجة.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="#" data-wa="أهلاً، عايز نسخة تجريبية مجانية على شغلي.">اطلب نسخة تجريبية على واتساب</a>
+        <a class="btn btn-line" href="#demos">شوف نماذج شغلي</a>
+      </div>
+      <ul class="ticks"><li>نسخة تجريبية مجانية</li><li>بدون أي التزام</li><li>دعم بعد التسليم</li></ul>
     </div>
-    <ul class="trust"><li>نسخة تجريبية مجانية</li><li>بدون أي التزام</li><li>دعم بعد التسليم</li></ul>
-  </div>
 
-  <div class="tracker" aria-labelledby="tr-title">
-    <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>نظام إدارة الطلبات</span></div>
-    <div class="tracker-head">
-      <h2 id="tr-title">لوحة الطلبات</h2>
-      <span class="hint">بتتحدث لوحدها، أو اضغط على أي طلب</span>
+    <div class="board" aria-label="لوحة طلبات تجريبية">
+      <div class="board-top"><strong>لوحة الطلبات</strong><small>اضغط على أي طلب لتغيير حالته</small></div>
+      <div class="counts">
+        <div class="count c-new"><b id="n-new">0</b>جديد</div>
+        <div class="count c-run"><b id="n-run">0</b>تحت التنفيذ</div>
+        <div class="count c-done"><b id="n-done">0</b>خلص</div>
+      </div>
+      <ul class="reqs" id="reqs"></ul>
+      <p class="note">بيانات تجريبية للتوضيح فقط. النظام الحقيقي بيتعمل على بيانات شغلك.</p>
     </div>
-    <div class="counts">
-      <div class="count c-new"><b id="n-new">0</b><span>جديد</span></div>
-      <div class="count c-doing"><b id="n-doing">0</b><span>تحت التنفيذ</span></div>
-      <div class="count c-done"><b id="n-done">0</b><span>خلص</span></div>
-    </div>
-    <div class="prog" aria-hidden="true"><div id="bar"></div></div>
-    <ul class="rows" id="rows"></ul>
-    <p class="note">بيانات تجريبية للتوضيح فقط. النظام الحقيقي بيتعمل على بيانات شغلك.</p>
   </div>
-</div>
+</section>
+
+<section class="showcase" id="demos">
+  <div class="wrap">
+    <h2>شوف شغلي بنفسك</h2>
+    <p class="sub">دي نماذج شغالة بتتفتح في صفحة جديدة. جربها زي ما العميل هيجربها.</p>
+    <div class="demos">
+      <a class="demo" href="order.html">
+        <span class="ico">🔧</span>
+        <h3>اطلب صنايعي</h3>
+        <p>العميل يسجّل طلب الصيانة، ويوصل لفنيين يقدموا عروضهم عليه.</p>
+        <em>افتح النموذج</em>
+      </a>
+      <a class="demo" href="restaurant.html">
+        <span class="ico">🍖</span>
+        <h3>بيت المشاوي</h3>
+        <p>صفحة مطعم بمنيو وطلب أونلاين، تثبت إن نفس الفكرة بتتفصّل لأي نشاط.</p>
+        <em>افتح النموذج</em>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section id="services">
   <div class="wrap">
-    <h2 class="title">إيه اللي أقدر أعمله لك</h2>
-    <div class="bento">
-      <div class="tile t1"><h3>نظام طلبات وحجوزات</h3><p>تسجيل كل طلب بحالته، وتعيين الفني المسؤول، ومتابعة العميل لحد ما الشغل يخلص، من غير ورق ولا رسايل ضايعة.</p></div>
-      <div class="tile t2"><h3>لوحة تحكم</h3><p>الطلبات الجديدة والمتأخرة وأداء كل فني قدامك على طول.</p></div>
-      <div class="tile t3"><h3>بوت واتساب وتيليجرام</h3><p>يرد على العملاء ويسجّل الطلبات تلقائي حتى وانت مش قدام الموبايل.</p></div>
-      <div class="tile t4"><h3>تقارير جاهزة</h3><p>ملخصات Excel وPDF تبعتها للمحاسب أو الشريك من غير تجميع يدوي.</p></div>
+    <h2>إيه اللي أقدر أعمله لك</h2>
+    <div class="grid4">
+      <div class="card"><h3>نظام طلبات وحجوزات</h3><p>تسجيل كل طلب بحالته، وتعيين الفني المسؤول، ومتابعة العميل لحد ما الشغل يخلص، من غير ورق ولا رسايل ضايعة.</p></div>
+      <div class="card"><h3>لوحة تحكم</h3><p>الطلبات الجديدة والمتأخرة وأداء كل فني قدامك على طول.</p></div>
+      <div class="card"><h3>بوت واتساب وتيليجرام</h3><p>يرد على العملاء ويسجّل الطلبات تلقائي حتى وانت مش قدام الموبايل.</p></div>
+      <div class="card"><h3>تقارير جاهزة</h3><p>ملخصات Excel وPDF تبعتها للمحاسب أو الشريك من غير تجميع يدوي.</p></div>
+    </div>
+    <div class="fit" aria-label="الأنشطة المناسبة">
+      <span>مراكز الصيانة</span><span>الخدمات المنزلية</span><span>العيادات والمراكز الطبية</span><span>الصالونات</span><span>شركات الشحن والتوصيل</span><span>المكاتب والشركات الصغيرة</span>
     </div>
   </div>
 </section>
 
-<section id="who">
+<section id="process" style="padding-top:0">
   <div class="wrap">
-    <h2 class="title">مناسب لأي شغل بيستقبل طلبات وبيتابع عملاء</h2>
-    <ul class="who"><li>مراكز الصيانة</li><li>الخدمات المنزلية</li><li>العيادات والمراكز الطبية</li><li>الصالونات</li><li>شركات الشحن والتوصيل</li><li>المكاتب والشركات الصغيرة</li></ul>
-  </div>
-</section>
-
-<section id="process">
-  <div class="wrap">
-    <h2 class="title">بنشتغل على 3 خطوات</h2>
+    <h2>بنشتغل على 3 خطوات</h2>
     <ol class="steps">
-      <li><b>نتكلم عن شغلك</b><span>تحكيلي بتشتغل إزاي وإيه اللي بيتعبك.</span></li>
-      <li><b>أوريك نسخة تجريبية</b><span>تشوف النظام على شغلك قبل أي دفع.</span></li>
-      <li><b>أسلّم وأدرّب فريقك</b><span>النظام يشتغل عندك وأفضل جنبك للدعم والتعديلات.</span></li>
+      <li><h3>نتكلم عن شغلك</h3><p>احكيلي بتشتغل إزاي وإيه اللي بيتعبك.</p></li>
+      <li><h3>أوريك نسخة تجريبية</h3><p>تشوف النظام على شغلك قبل أي دفع.</p></li>
+      <li><h3>أسلّم وأدرّب فريقك</h3><p>النظام يشتغل عندك وأفضل جنبك للدعم والتعديلات.</p></li>
     </ol>
   </div>
 </section>
 
-<section id="about">
-  <div class="wrap">
-    <h2 class="title">مين اللي هيشتغل معاك</h2>
-    <div class="about">
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="avatar" aria-hidden="true">S</div>
+    <div>
+      <h2 style="margin-bottom:14px">مين اللي هيشتغل معاك</h2>
+      <!-- TODO: اكتب اسمك الحقيقي هنا، الناس بتثق في ناس مش في أسماء شركات -->
       <p>أنا مبرمج وصاحب SMAF IT، بشتغل بـ Python وDjango. بتعامل مع صاحب الشغل مباشرة: بسمع منه، وبعمل النظام على مقاس شغله، وبفضل متاح بعد التسليم للدعم والتعديلات. مفيش وسيط ومفيش وعود فاضية، النسخة التجريبية هي اللي بتتكلم.</p>
-      <ul class="stack" aria-label="التقنيات المستخدمة"><li>Python</li><li>Django</li><li>واتساب</li><li>تيليجرام</li><li>تقارير Excel</li></ul>
+      <div class="chips"><span>Python</span><span>Django</span><span>واتساب</span><span>تيليجرام</span><span>تقارير Excel</span></div>
     </div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <h2 class="title">أسئلة شائعة</h2>
-    <details>
-      <summary>محتاج أفهم في البرمجة عشان أستخدمه؟</summary>
-      <p>لأ. النظام بيتعمل بحيث تستخدمه من أول يوم، وبدرّبك انت والفنيين عليه.</p>
-    </details>
-    <details>
-      <summary>إمتى أشوف النسخة التجريبية؟</summary>
-      <p>بعد ما نتكلم عن شغلك نحدد ميعاد قريب، وتشوفها من غير أي التزام.</p>
-    </details>
-    <details>
-      <summary>السعر كام؟</summary>
-      <p>بيتحدد حسب احتياج شغلك. هقولك سعر واضح بعد النسخة التجريبية.</p>
-    </details>
+    <h2>أسئلة شائعة</h2>
+    <details><summary>محتاج أفهم في البرمجة عشان أستخدمه؟</summary><p>لأ. النظام بيتعمل بحيث تستخدمه من أول يوم، وبدرّبك انت والفنيين عليه.</p></details>
+    <details><summary>إمتى أشوف النسخة التجريبية؟</summary><p>بعد ما نتكلم عن شغلك نحدد ميعاد قريب، وتشوفها من غير أي التزام.</p></details>
+    <details><summary>السعر كام؟</summary><!-- TODO: لو عندك سعر بداية اكتبه هنا، مثلاً: "بيبدأ من ... جنيه" -->
+      <p>بيتحدد حسب احتياج شغلك. هقولك سعر مكتوب وواضح بعد النسخة التجريبية وقبل ما تدفع أي حاجة.</p></details>
   </div>
 </section>
 
-<section class="cta" id="contact">
+<section class="contact" id="contact">
   <div class="wrap">
     <h2>جاهز تنظّم شغلك؟</h2>
     <p>ابعتلي رسالة وهوريك نسخة تجريبية على شغلك في 10 دقايق، من غير أي التزام.</p>
-    <form id="lead" novalidate>
-      <div class="field"><label for="f-name">اسمك</label><input id="f-name" name="name" autocomplete="name" required></div>
-      <div class="field"><label for="f-biz">نوع شغلك</label><input id="f-biz" name="biz" placeholder="مثال: مركز صيانة" required></div>
-      <button class="btn" type="submit">ابعت الطلب على واتساب</button>
+    <form id="f">
+      <label>اسمك<input id="f-name" name="name" autocomplete="name" required></label>
+      <label>نوع شغلك<input id="f-biz" name="biz" placeholder="مثلاً: مركز صيانة تكييفات" required></label>
+      <button class="btn btn-wa" type="submit">ابعت الطلب على واتساب</button>
     </form>
-    <p class="hint-cta">أو كلمني مباشرة على <a data-wa href="#" style="color:#fff">واتساب</a> أو على <a href="mailto:tyer2265@gmail.com" style="color:#fff">tyer2265@gmail.com</a></p>
+    <p class="alt">أو كلمني مباشرة على <a href="#" data-wa="أهلاً، عايز أستفسر عن النظام.">واتساب</a> أو على <a href="mailto:tyer2265@gmail.com">tyer2265@gmail.com</a></p>
   </div>
 </section>
 </main>
 
-<footer>
-  <div class="wrap">© <span id="yr"></span> SMAF IT. جميع الحقوق محفوظة.</div>
-</footer>
+<footer>© SMAF IT. جميع الحقوق محفوظة.</footer>
+<a class="fab" href="#" data-wa="أهلاً، عايز أعرف أكتر عن النظام.">💬 واتساب</a>
 
 <script>
-(function () {
-  // غيّر الرقم هنا فقط: صيغة دولية بدون + أو أصفار، مثال مصر: 201001234567
-  var WA = "201004869385";
-  function wa(text) { return "https://wa.me/" + WA + "?text=" + encodeURIComponent(text); }
-  document.querySelectorAll("a[data-wa]").forEach(function (a) {
-    a.href = wa("السلام عليكم، عايز أشوف نسخة تجريبية");
-  });
-  var form = document.getElementById("lead");
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var n = form.name.value.trim(), b = form.biz.value.trim();
-    if (!n || !b) { (n ? form.biz : form.name).focus(); return; }
-    window.open(wa("السلام عليكم، أنا " + n + " وعندي " + b + ". عايز أشوف نسخة تجريبية."), "_blank", "noopener");
-  });
-  var STATES = ["new", "doing", "done"];
-  var LABELS = { new: "جديد", doing: "تحت التنفيذ", done: "خلص" };
-  var data = [
-    { t: "صيانة تكييف", s: "مدينة نصر", st: "doing" },
-    { t: "سباكة مطبخ", s: "المعادي", st: "new" },
-    { t: "كهرباء شقة", s: "الجيزة", st: "done" },
-    { t: "تصليح غسالة", s: "الهرم", st: "new" }
-  ];
-  var list = document.getElementById("rows");
+const PHONE = "201004869385";
+const waLink = t => "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(t);
 
-  function render() {
-    list.innerHTML = "";
-    var c = { new: 0, doing: 0, done: 0 };
-    data.forEach(function (r, i) {
-      c[r.st]++;
-      var li = document.createElement("li");
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "row";
-      b.setAttribute("aria-label", r.t + "، الحالة: " + LABELS[r.st] + ". اضغط لتغيير الحالة");
-      b.innerHTML = "<span>" + r.t + "<small>" + r.s + "</small></span>" +
-        "<span class=\"pill p-" + r.st + "\">" + LABELS[r.st] + "</span>";
-      b.addEventListener("click", function () {
-        clearInterval(timer);
-        r.st = STATES[(STATES.indexOf(r.st) + 1) % STATES.length];
-        render();
-        list.querySelectorAll(".row")[i].focus();
-      });
-      li.appendChild(b);
-      list.appendChild(li);
-    });
-    document.getElementById("n-new").textContent = c.new;
-    document.getElementById("n-doing").textContent = c.doing;
-    document.getElementById("n-done").textContent = c.done;
-    document.getElementById("bar").style.width = Math.round(c.done / data.length * 100) + "%";
-  }
-  var timer, k = 0;
-  render();
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    timer = setInterval(function () {
-      var r = data[k % data.length];
-      r.st = STATES[(STATES.indexOf(r.st) + 1) % STATES.length];
-      k++;
-      render();
-    }, 2200);
-  }
-  document.getElementById("yr").textContent = new Date().getFullYear();
-})();
+// كل لينكات الواتساب
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = waLink(a.dataset.wa);
+  a.target = "_blank";
+  a.rel = "noopener";
+});
+
+// نموذج التواصل يفتح واتساب برسالة جاهزة
+document.getElementById("f").addEventListener("submit", e => {
+  e.preventDefault();
+  const n = document.getElementById("f-name").value.trim();
+  const b = document.getElementById("f-biz").value.trim();
+  window.open(waLink("أهلاً، أنا " + n + ". شغلي: " + b + ". عايز نسخة تجريبية."), "_blank", "noopener");
+});
+
+// لوحة الطلبات التجريبية
+const states = ["new", "run", "done"];
+const label = { new: "جديد", run: "تحت التنفيذ", done: "خلص" };
+const data = [
+  { t: "عطل تكييف", s: "غرفة نوم، مدينة نصر", st: 0 },
+  { t: "تسريب مياه", s: "مطبخ، الدقي", st: 1 },
+  { t: "صيانة غسالة", s: "المعادي", st: 1 },
+  { t: "تغيير كوالين", s: "شقة 4، فيصل", st: 2 }
+];
+const list = document.getElementById("reqs");
+function render() {
+  list.innerHTML = "";
+  data.forEach((r, i) => {
+    const li = document.createElement("li");
+    const b = document.createElement("button");
+    b.className = "req";
+    b.type = "button";
+    const k = states[r.st];
+    b.innerHTML = "<span>" + r.t + "<small>" + r.s + "</small></span><span class='tag t-" + k + "'>" + label[k] + "</span>";
+    b.onclick = () => { r.st = (r.st + 1) % 3; render(); };
+    li.appendChild(b);
+    list.appendChild(li);
+  });
+  states.forEach((k, i) => {
+    document.getElementById("n-" + k).textContent = data.filter(r => r.st === i).length;
+  });
+}
+render();
 </script>
-   <a href="restaurant.html" style="display:block;background:#C9A227;color:#000;text-align:center;padding:16px;border-radius:14px;font-weight:900;font-size:18px;margin:16px">🍖 شوف نموذج المطعم - بيت المشاوي ← اضغط هنا</a>  
-<a href="order.html" style="display:block;max-width:320px;margin:20px auto;padding:16px;text-align:center;background:linear-gradient(90deg,#38BDF8,#60A5FA);color:#fff;font-size:19px;font-weight:900;border-radius:16px;text-decoration:none;box-shadow:0 10px 25px rgba(56,189,248,.35)">🔧 شوف نموذج شغلي - اطلب صنايعي</a>
 </body>
 </html>

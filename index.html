@@ -1,314 +1,300 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SMAF IT | أنظمة إدارة لمراكز الصيانة والشركات الصغيرة</title>
-<meta name="description" content="أنظمة برمجية على مقاس شغلك: تسجيل الطلبات، متابعة الفنيين، وتقارير واضحة. نسخة تجريبية قبل أي دفع.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#10283a; --ink2:#42586a; --paper:#f4f7f9; --white:#fff;
-  --line:#d9e2e8; --amber:#f2b01e; --amber-d:#c98f08; --green:#1f8a5b; --blue:#2467b3;
-  --wa:#1fa855;
-}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;font-size:17px}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-section{padding:64px 0}
-h1,h2,h3{line-height:1.35}
-h2{font-size:clamp(24px,4vw,32px);margin-bottom:28px}
-h3{font-size:19px;margin-bottom:6px}
-.btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font:inherit;font-weight:700}
-.btn-wa{background:var(--wa);color:#fff}
-.btn-wa:hover{background:#188a46}
-.btn-line{border-color:var(--ink);color:var(--ink)}
-.btn-line:hover{background:var(--ink);color:#fff}
-
-/* header */
-header{position:sticky;top:0;z-index:20;background:rgba(244,247,249,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-.logo{font-weight:700;font-size:22px;text-decoration:none;letter-spacing:.5px}
-.logo b{background:var(--amber);padding:0 8px;border-radius:6px;margin-inline-start:2px}
-nav{display:flex;gap:20px;font-size:15px}
-nav a{text-decoration:none;color:var(--ink2)}
-nav a:hover{color:var(--ink)}
-.bar .btn{padding:8px 16px;font-size:15px}
-@media(max-width:760px){nav{display:none}}
-
-/* hero */
-.hero{padding:48px 0 56px}
-.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(28px,5vw,44px);margin-bottom:16px}
-.hero p.lead{color:var(--ink2);margin-bottom:24px;max-width:46ch}
-.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-.ticks{list-style:none;padding:0;display:flex;gap:18px;flex-wrap:wrap;font-size:15px;color:var(--ink2)}
-.ticks li::before{content:"✓";color:var(--green);font-weight:700;margin-inline-end:6px}
-@media(max-width:820px){.hero-grid{grid-template-columns:1fr}}
-
-/* dashboard */
-.board{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 8px 28px rgba(16,40,58,.08)}
-.board-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.board-top strong{font-size:17px}
-.board-top small{color:var(--ink2);font-size:13px}
-.counts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.count{border-radius:10px;padding:10px;text-align:center;font-size:13px;color:var(--ink2)}
-.count b{display:block;font-size:26px;color:var(--ink);line-height:1.2}
-.c-new{background:#e8f0fa}.c-run{background:#fdf3d9}.c-done{background:#e2f3ea}
-.reqs{list-style:none;padding:0;display:grid;gap:8px}
-.req{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:start;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;font:inherit;font-size:15px;color:var(--ink)}
-.req:hover{border-color:var(--ink2)}
-.req span small{display:block;color:var(--ink2);font-size:13px}
-.tag{font-size:13px;font-weight:700;padding:2px 10px;border-radius:99px;white-space:nowrap}
-.t-new{background:#d6e5f7;color:var(--blue)}
-.t-run{background:#fbe6ab;color:#7a5600}
-.t-done{background:#c9eadb;color:#14623f}
-.note{font-size:12px;color:var(--ink2);margin-top:12px}
-
-/* showcase */
-.showcase{background:var(--ink);color:#fff}
-.showcase h2{margin-bottom:8px}
-.showcase .sub{color:#b9c7d2;margin-bottom:28px}
-.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.demo{display:block;text-decoration:none;background:#17384f;border:1px solid #2a4d66;border-radius:14px;padding:24px;transition:border-color .2s}
-.demo:hover{border-color:var(--amber)}
-.demo .ico{font-size:34px;display:block;margin-bottom:8px}
-.demo h3{color:#fff}
-.demo p{color:#b9c7d2;font-size:15px;margin-bottom:14px}
-.demo em{font-style:normal;color:var(--amber);font-weight:700}
-@media(max-width:900px){.demos{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.demos{grid-template-columns:1fr}}
-
-/* services */
-.grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px}
-.card p{color:var(--ink2);font-size:16px}
-.fit{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
-.fit span{background:var(--white);border:1px solid var(--line);border-radius:99px;padding:4px 14px;font-size:15px}
-@media(max-width:700px){.grid4{grid-template-columns:1fr}}
-
-/* process */
-.steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
-.steps li{counter-increment:s;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px}
-.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--amber);font-weight:700;margin-bottom:10px}
-.steps p{color:var(--ink2);font-size:16px}
-@media(max-width:760px){.steps{grid-template-columns:1fr}}
-
-/* about */
-.about{background:var(--white);border-block:1px solid var(--line)}
-.about-grid{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
-/* TODO: غيّر الحرف ده بصورتك: <img src="me.jpg" alt="صورتي" class="avatar"> */
-.avatar{width:112px;height:112px;border-radius:50%;background:var(--ink);color:var(--amber);display:grid;place-items:center;font-size:40px;font-weight:700;object-fit:cover}
-.about p{color:var(--ink2);margin-bottom:14px;max-width:62ch}
-.chips{display:flex;gap:8px;flex-wrap:wrap}
-.chips span{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:2px 12px;font-size:14px}
-@media(max-width:600px){.about-grid{grid-template-columns:1fr}}
-
-/* faq */
-details{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
-summary{cursor:pointer;font-weight:700}
-details p{color:var(--ink2);margin-top:8px;font-size:16px}
-
-/* contact */
-.contact{background:var(--ink);color:#fff;text-align:center}
-.contact p{color:#b9c7d2;margin-bottom:24px}
-form{background:var(--white);color:var(--ink);border-radius:16px;padding:22px;max-width:440px;margin:0 auto 18px;display:grid;gap:12px;text-align:start}
-label{font-size:15px;font-weight:500}
-input{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:10px;font:inherit;margin-top:4px}
-input:focus{border-color:var(--ink);outline:none}
-.alt a{color:var(--amber)}
-footer{background:#0b1c29;color:#8ea2b1;text-align:center;padding:20px;font-size:14px}
-
-/* floating whatsapp */
-.fab{position:fixed;inset-inline-start:16px;bottom:16px;z-index:30;background:var(--wa);color:#fff;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:99px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-</style>
-</head>
-<body>
-
-<header>
-  <div class="wrap bar">
-    <a class="logo" href="#">SMAF<b>IT</b></a>
-    <nav>
-      <a href="#demos">نماذج شغلي</a>
-      <a href="#services">الخدمات</a>
-      <a href="#process">طريقة الشغل</a>
-      <a href="#about">عني</a>
-      <a href="#faq">أسئلة شائعة</a>
-    </nav>
-    <a class="btn btn-wa" href="#" data-wa="أهلاً، عايز أعرف أكتر عن النظام وأشوف نسخة تجريبية.">واتساب</a>
-  </div>
-</header>
-
-<main>
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>طلبات الصيانة كلها في مكان واحد، وكل فني عارف شغله</h1>
-      <p class="lead">بصمم وأبرمج لك نظام على مقاس مركزك بـ Python وDjango، بدل الورق والواتساب والإكسيل. تشوفه شغال على بياناتك قبل ما تدفع أي حاجة.</p>
-<div class="cta-row">
-        <a class="btn btn-wa" href="#" data-wa="أهلاً، عايز نسخة تجريبية مجانية على شغلي.">اطلب نسخة تجريبية على واتساب</a>
-        <a class="btn btn-line" href="#demos">شوف نماذج شغلي</a>
-      </div>
-      <ul class="ticks"><li>نسخة تجريبية مجانية</li><li>بدون أي التزام</li><li>دعم بعد التسليم</li></ul>
-    </div>
-
-    <div class="board" aria-label="لوحة طلبات تجريبية">
-      <div class="board-top"><strong>لوحة الطلبات</strong><small>اضغط على أي طلب لتغيير حالته</small></div>
-      <div class="counts">
-        <div class="count c-new"><b id="n-new">0</b>جديد</div>
-        <div class="count c-run"><b id="n-run">0</b>تحت التنفيذ</div>
-        <div class="count c-done"><b id="n-done">0</b>خلص</div>
-      </div>
-      <ul class="reqs" id="reqs"></ul>
-      <p class="note">بيانات تجريبية للتوضيح فقط. النظام الحقيقي بيتعمل على بيانات شغلك.</p>
-    </div>
-  </div>
-</section>
-
-<section class="showcase" id="demos">
-  <div class="wrap">
-    <h2>شوف شغلي بنفسك</h2>
-    <p class="sub">دي نماذج شغالة بتتفتح في صفحة جديدة. جربها زي ما العميل هيجربها.</p>
-<div class="demos">
-      <a class="demo" href="order.html" target="_blank" rel="noopener">
-        <span class="ico">🔧</span>
-        <h3>اطلب صنايعي</h3>
-        <p>العميل يسجّل طلب الصيانة، ويوصل لفنيين يقدموا عروضهم عليه.</p>
-        <em>افتح النموذج</em>
+<p data-i18n="d1p">العميل يسجّل طلب الصيانة، ويوصل لفنيين يقدموا عروضهم عليه.</p>
+        <em data-i18n="openDemo">افتح النموذج ←</em>
       </a>
       <a class="demo" href="restaurant.html" target="_blank" rel="noopener">
-        <span class="ico">🍖</span>
-        <h3>بيت المشاوي</h3>
-        <p>صفحة مطعم بمنيو وطلب أونلاين، تثبت إن نفس الفكرة بتتفصّل لأي نشاط.</p>
-        <em>افتح النموذج</em>
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M7 3v7M7 10a2 2 0 012 2v9M7 10a2 2 0 00-2 2v9M16 3c-1.6 1.8-2.2 4.6-2.2 6.8 0 1.9.5 3.2 2.2 3.7V21"/></svg></span>
+        <h3 data-i18n="d2t">بيت المشاوي</h3>
+        <p data-i18n="d2p">صفحة مطعم بمنيو وطلب أونلاين، تثبت إن نفس الفكرة بتتفصّل لأي نشاط.</p>
+        <em data-i18n="openDemo">افتح النموذج ←</em>
       </a>
       <a class="demo" href="clinic.html" target="_blank" rel="noopener">
-        <span class="ico">🩺</span>
-        <h3>عيادتي للحجز</h3>
-        <p>نموذج حجز موعد مريض: التخصص والفترة والبيانات توصل المركز على واتساب.</p>
-        <em>افتح النموذج</em>
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>
+        <h3 data-i18n="d3t">عيادتي للحجز</h3>
+        <p data-i18n="d3p">نموذج حجز موعد مريض: التخصص والفترة والبيانات توصل المركز على واتساب.</p>
+        <em data-i18n="openDemo">افتح النموذج ←</em>
+</a>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2 data-i18n-h="pricingTitle">باقات <span>تناسب حجم شغلك</span></h2>
+    <p class="sub" data-i18n="pricingSub">ابدأ بالحجم اللي يخدمك النهاردة، وتوسّع لما شغلك يكبر. السعر بيتكتب بوضوح بعد النسخة التجريبية وقبل أي دفع.</p>
+    <div class="pricing">
+      <div class="plan">
+        <div class="tagline" data-i18n="p1tag">لبداية منظّمة</div>
+        <h3 data-i18n="p1t">باقة البداية</h3>
+        <p class="desc" data-i18n="p1d">لنشاط صغير يجمع طلباته ومواعيده في مكان واحد بسيط.</p>
+        <ul>
+          <li data-i18n="p1f1"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>نموذج طلب أو حجز واحد شغال</li>
+          <li data-i18n="p1f2"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>إرسال مباشر على واتسابك</li>
+          <li data-i18n="p1f3"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>صفحة تعريفية بسيطة بالنشاط</li>
+          <li data-i18n="p1f4"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>تعديلات بسيطة عند التسليم</li>
+</ul>
+        <a class="btn btn-ghost" href="#" data-wa="أهلاً، مهتم بباقة البداية، عايز تفاصيلها."><span data-i18n="p1cta">ابدأ التجربة</span></a>
+      </div>
+      <div class="plan hot">
+        <div class="tagline" data-i18n="p2tag">الأكثر طلبًا</div>
+        <h3 data-i18n="p2t">باقة النمو</h3>
+        <p class="desc" data-i18n="p2d">لنشاط عنده طلبات يومية ومحتاج متابعة واضحة وتقارير بدل الشغل اليدوي.</p>
+        <ul>
+          <li data-i18n="p2f1"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>كل مزايا باقة البداية</li>
+          <li data-i18n="p2f2"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>لوحة متابعة حالات الطلبات</li>
+          <li data-i18n="p2f3"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>حقول بيانات مخصصة لنشاطك</li>
+          <li data-i18n="p2f4"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>تقارير مختصرة للمتابعة الدورية</li>
+          <li data-i18n="p2f5"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>تدريب لك وللفريق على الاستخدام</li>
+</ul>
+        <a class="btn btn-primary" href="#" data-wa="أهلاً، مهتم بباقة النمو، عايز أعرض نسخة تجريبية على شغلي."><span data-i18n="p2cta">اطلب عرض تجريبي</span></a>
+      </div>
+      <div class="plan">
+        <div class="tagline" data-i18n="p3tag">تشغيل متكامل</div>
+        <h3 data-i18n="p3t">باقة المؤسسات</h3>
+        <p class="desc" data-i18n="p3d">لجهة عندها أكثر من موظف أو فرع، ومحتاجة ربطًا شاملاً ودعمًا مستمرًا.</p>
+        <ul>
+          <li data-i18n="p3f1"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>كل مزايا باقة النمو</li>
+          <li data-i18n="p3f2"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>بوت ردود أولية على واتساب أو تيليجرام</li>
+          <li data-i18n="p3f3"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>صلاحيات متعددة للمستخدمين</li>
+          <li data-i18n="p3f4"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>نسخ احتياطي دوري للبيانات</li>
+          <li data-i18n="p3f5"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>دعم شهري مخصص وتطوير مستمر</li>
+</ul>
+        <a class="btn btn-ghost" href="#" data-wa="أهلاً، مهتم بباقة المؤسسات وعايز نناقش المتطلبات."><span data-i18n="p3cta">ناقش متطلباتك</span></a>
+      </div>
+    </div>
+    <p class="plan-note" data-i18n="pricingNote">الأسعار تُحسب بعد المعاينة والنسخة التجريبية، وتُعرض مكتوبة بوضوح قبل أي دفع — والتجربة نفسها بدون مقابل.</p>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <h2 data-i18n-h="galleryTitle">شاشات <span>حية من النماذج</span></h2>
+    <p class="sub" data-i18n="gallerySub">كل بطاقة بتفتح نموذجًا حقيقيًا شغالًا الآن — جرّب وتنقل بين الخطوات زي أي عميل.</p>
+    <div class="frames">
+      <a class="frame" href="order.html" target="_blank" rel="noopener">
+        <div class="browser"><span class="bd b1"></span><span class="bd b2"></span><span class="bd b3"></span><span class="url">shaban39.github.io/my-site/order.html</span></div>
+        <div class="mock"><span class="mbar w80"></span><span class="mbar w60"></span><span class="mchip"></span><span class="mbar w40"></span></div>
+<div class="fmeta"><b data-i18n="g1t">نموذج اطلب صنايعي</b><span data-i18n="g1d">تسجيل طلب صيانة وتتبع حالته</span></div>
+      </a>
+      <a class="frame" href="restaurant.html" target="_blank" rel="noopener">
+        <div class="browser"><span class="bd b1"></span><span class="bd b2"></span><span class="bd b3"></span><span class="url">shaban39.github.io/my-site/restaurant.html</span></div>
+        <div class="mock"><span class="mbar w60"></span><span class="mbar w80"></span><span class="mchip"></span><span class="mbar w40"></span></div>
+        <div class="fmeta"><b data-i18n="g2t">بيت المشاوي</b><span data-i18n="g2d">منيو مطعم وطلب أونلاين</span></div>
+      </a>
+      <a class="frame" href="clinic.html" target="_blank" rel="noopener">
+        <div class="browser"><span class="bd b1"></span><span class="bd b2"></span><span class="bd b3"></span><span class="url">shaban39.github.io/my-site/clinic.html</span></div>
+        <div class="mock"><span class="mbar w80"></span><span class="mbar w40"></span><span class="mchip"></span><span class="mbar w60"></span></div>
+<div class="fmeta"><b data-i18n="g3t">عيادتي للحجز</b><span data-i18n="g3d">حجز مواعيد التخصصات الطبية</span></div>
       </a>
     </div>
   </div>
 </section>
 
-<section id="services">
-  <div class="wrap">
-    <h2>إيه اللي أقدر أعمله لك</h2>
-    <div class="grid4">
-      <div class="card"><h3>نظام طلبات وحجوزات</h3><p>تسجيل كل طلب بحالته، وتعيين الفني المسؤول، ومتابعة العميل لحد ما الشغل يخلص، من غير ورق ولا رسايل ضايعة.</p></div>
-<div class="card"><h3>لوحة تحكم</h3><p>الطلبات الجديدة والمتأخرة وأداء كل فني قدامك على طول.</p></div>
-      <div class="card"><h3>بوت واتساب وتيليجرام</h3><p>يرد على العملاء ويسجّل الطلبات تلقائي حتى وانت مش قدام الموبايل.</p></div>
-      <div class="card"><h3>تقارير جاهزة</h3><p>ملخصات Excel وPDF تبعتها للمحاسب أو الشريك من غير تجميع يدوي.</p></div>
-    </div>
-    <div class="fit" aria-label="الأنشطة المناسبة">
-      <span>مراكز الصيانة</span><span>الخدمات المنزلية</span><span>العيادات والمراكز الطبية</span><span>الصالونات</span><span>شركات الشحن والتوصيل</span><span>المكاتب والشركات الصغيرة</span>
-    </div>
-  </div>
-</section>
-
-<section id="process" style="padding-top:0">
-  <div class="wrap">
-    <h2>بنشتغل على 3 خطوات</h2>
-    <ol class="steps">
-      <li><h3>نتكلم عن شغلك</h3><p>احكيلي بتشتغل إزاي وإيه اللي بيتعبك.</p></li>
-      <li><h3>أوريك نسخة تجريبية</h3><p>تشوف النظام على شغلك قبل أي دفع.</p></li>
-      <li><h3>أسلّم وأدرّب فريقك</h3><p>النظام يشتغل عندك وأفضل جنبك للدعم والتعديلات.</p></li>
-</ol>
-  </div>
-</section>
-
-<section class="about" id="about">
-  <div class="wrap about-grid">
-    <div class="avatar" aria-hidden="true">S</div>
-    <div>
-      <h2 style="margin-bottom:14px">مين اللي هيشتغل معاك</h2>
-      <!-- TODO: اكتب اسمك الحقيقي هنا، الناس بتثق في ناس مش في أسماء شركات -->
-      <p>أنا مبرمج وصاحب SMAF IT، بشتغل بـ Python وDjango. بتعامل مع صاحب الشغل مباشرة: بسمع منه، وبعمل النظام على مقاس شغله، وبفضل متاح بعد التسليم للدعم والتعديلات. مفيش وسيط ومفيش وعود فاضية، النسخة التجريبية هي اللي بتتكلم.</p>
-      <div class="chips"><span>Python</span><span>Django</span><span>واتساب</span><span>تيليجرام</span><span>تقارير Excel</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <h2>أسئلة شائعة</h2>
-    <details><summary>محتاج أفهم في البرمجة عشان أستخدمه؟</summary><p>لأ. النظام بيتعمل بحيث تستخدمه من أول يوم، وبدرّبك انت والفنيين عليه.</p></details>
-    <details><summary>إمتى أشوف النسخة التجريبية؟</summary><p>بعد ما نتكلم عن شغلك نحدد ميعاد قريب، وتشوفها من غير أي التزام.</p></details>
-<details><summary>السعر كام؟</summary><!-- TODO: لو عندك سعر بداية اكتبه هنا، مثلاً: "بيبدأ من ... جنيه" -->
-      <p>بيتحدد حسب احتياج شغلك. هقولك سعر مكتوب وواضح بعد النسخة التجريبية وقبل ما تدفع أي حاجة.</p></details>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="wrap">
-    <h2>جاهز تنظّم شغلك؟</h2>
-    <p>ابعتلي رسالة وهوريك نسخة تجريبية على شغلك في 10 دقايق، من غير أي التزام.</p>
-    <form id="f">
-      <label>اسمك<input id="f-name" name="name" autocomplete="name" required></label>
-      <label>نوع شغلك<input id="f-biz" name="biz" placeholder="مثلاً: مركز صيانة تكييفات" required></label>
-      <button class="btn btn-wa" type="submit">ابعت الطلب على واتساب</button>
-    </form>
-    <p class="alt">أو كلمني مباشرة على <a href="#" data-wa="أهلاً، عايز أستفسر عن النظام.">واتساب</a> أو على <a href="mailto:tyer2265@gmail.com">tyer2265@gmail.com</a></p>
-  </div>
-</section>
-</main>
-
-<footer>© SMAF IT. جميع الحقوق محفوظة.</footer>
-<a class="fab" href="#" data-wa="أهلاً، عايز أعرف أكتر عن النظام.">💬 واتساب</a>
-<script>
-const PHONE = "201004869385";
-const waLink = t => "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(t);
-
-// كل لينكات الواتساب
-document.querySelectorAll("[data-wa]").forEach(a => {
-  a.href = waLink(a.dataset.wa);
-  a.target = "_blank";
-  a.rel = "noopener";
+st3t: "Handover & team training", st3p: "The system goes live with ongoing support and adjustments.",
+    reviewsSub: "Illustrative examples of the impact on day-to-day follow-up.",
+rv1p: "I used to track requests on WhatsApp and paper. The sample showed me how to organize them, and after trying it on my own data I decided to go ahead with the full system.",
+    rv1n: "Ahmed M.", rv1r: "Air-conditioning maintenance center",
+    rv2p: "Appointments get booked without many calls, and the message arrives with all required details instead of being written manually on every contact.",
+    rv2n: "Dr. Sara", rv2r: "Dental clinic",
+    rv3p: "What made the difference was seeing the system on my own data before paying, so I knew exactly what I was getting — no surprises in price or features.",
+    rv3n: "Mahmoud A.", rv3r: "Restaurant",
+    rvNote: "Cards are illustrative samples for the section layout; replace them with your real customer reviews after your first handovers.",
+    aboutP: "I am the developer behind SMAF IT, working with Python and Django. I deal directly with the business owner: I listen, build the system around their actual workflow, and stay available after handover for support and adjustments. No middlemen and no empty promises — the demo speaks for itself.",
+aboutMore: "Read more about how we work ←",
+    trackTitle: "Your customer tracks their own request",
+    trackP: "A simple tracking page: the customer enters their number and sees the request stage without calling you every time.",
+    trackBtn1: "Try the tracking page", trackBtn2: "Explain the idea to me",
+    fq1q: "Do I need programming knowledge to use it?", fq1a: "No. The system is built to be used from day one, and I train you and your team on it.",
+    fq2q: "When do I see the demo?", fq2a: "After we discuss your business we set a near-term appointment, and you see it with no commitment.",
+    fq3q: "What is the price?", fq3a: "It is set according to your business needs after the review. You receive a clear written price after the demo and before any payment; the trial itself is free.",
+    fq4q: "How is my data protected?", fq4a: "Data lives in a secured database with daily backups, and each user only has their own permissions.",
+    fq5q: "Does the system work on mobile and desktop?", fq5a: "Yes. The interface is responsive: customers use it on their phones, and your tracking dashboard opens equally clearly on mobile and desktop.",
+fq6q: "Can I modify or add features after handover?", fq6a: "Certainly. Support packages include adjustments and additions on the same system, and the cost of each new feature is clarified before implementation.",
+    fq7q: "How long does delivery take?", fq7a: "The starter sample appears as a demo within days after first contact; larger systems have their timeline defined after review and stated in the proposal before starting.",
+    fq8q: "Can my current paper or Excel data move into the system?", fq8a: "Yes, we prepare and import your existing data when operations start, and it stays available for lookup and export at any time.",
+    contactSub: "Send your details and we’ll schedule a demo on your business — with no commitment.",
+    fName: "Your name", fPhone: "Mobile number", fActivity: "Business type",
+    fActPh: "Choose your business", act1: "Maintenance center / home services", act2: "Clinic or medical center",
+    act3: "Restaurant or café", act4: "Salon or beauty center", act5: "Small company / office", act6: "Other business",
+fBiz: "Short description of your business", fSubmit: "Send request on WhatsApp",
+    altPre: "Or reach me directly on", altWa: "WhatsApp", altOr: "or by email",
+    footAbout: "Software systems for small businesses and service centers, built around your workflow with a pre-payment demo and post-delivery support.",
+    footLinks: "Quick links", footContact: "Contact", footWa: "WhatsApp: 0100 486 9385",
+    footCopy: "© SMAF IT · All rights reserved · Python & Django"
+  },
+  "h": {
+    en: {
+      heroTitle: "All service requests in one place,<br>and every technician <em>knows the job</em>",
+      demosTitle: "See your <span>workflow</span> in action",
+      pricingTitle: "<span>Packages</span> sized to your business",
+      galleryTitle: "<span>Live screens</span> from the samples",
+      servicesTitle: "What I <span>can build</span> for you",
+      processTitle: "Delivered in <span>3 steps</span>",
+      reviewsTitle: "Why owners <span>test first</span>",
+      aboutTitle: "Who you’ll <span>work with</span>",
+faqTitle: "Common <span>questions</span>",
+      contactTitle: "Ready to <span>organize</span> your business?"
+    }
+  }
+};
+/* ===== ترجمة إضافية للأقسام المدمجة ===== */
+Object.assign(I18N.en, {
+  ab1t: "Foundation & learning", ab1p: "Building on Python and Django with practical web samples: forms, lists, and WhatsApp messaging — so the system rests on tested solutions, not experiments on your account.",
+  ab2t: "Working demo samples", ab2p: "Three published samples: a technician request form, a restaurant menu page, and a clinic booking form — each opens and works live, proving the same idea fits any business.",
+  ab3t: "Handover & support", ab3p: "After agreement: a demo on your real data, adjustments based on your notes, team training, and ongoing support after handover for fixes and new features.",
+  abp1t: "See the system before paying", abp1p: "A demo on your real business data that you and your team try before any commitment.",
+  abp2t: "Built around your workflow", abp2p: "Not a generic template forced onto your business; the system follows how requests, appointments, and follow-ups actually run.",
+abp3t: "Support after handover", abp3p: "The relationship doesn't end at delivery: adjustments, new features, and ongoing answers to questions and issues.",
+  abf1: "Live samples running", abf2: "Fully customized", abf3: "Features available", abf4: "Free trial version",
+  blogSub: "Three short articles for small-business owners: organizing requests, choosing your first system, and starting with WhatsApp.",
+  blogBack: "All articles", blogCtaText: "Liked the idea? Request a demo built around your business and see it before any commitment.", blogCtaBtn: "Request a free demo",
+  tkLabel: "Mobile number", tkBtn: "Track", tkHint: "Try these demo numbers:",
+  tkChip1: "In progress", tkChip2: "Completed", tkChip3: "Inquiry request",
+  tkEmptyT: "No request found for this number", tkEmptyP: "Check the full number, or message us on WhatsApp and we'll review your request directly.",
+  tkSumT: "Request details", tkId: "Request number", tkServ: "Service type", tkArea: "Area", tkDate: "Date",
+  tkNote: "This page is a demo showing the customer-facing tracking experience. Once your real system is built, live request statuses connect to this page."
+});
+Object.assign(I18N.h.en, {
+  abJourneyTitle: "Our work journey in <span>three stages</span>",
+  abPrinTitle: "Principles we <span>build on</span>",
+  blogTitleH: "Blog & <span>practical reads</span>",
+  trackTitleH: "Your customer tracks the request <span>themselves</span>"
 });
 
-// نموذج التواصل يفتح واتساب برسالة جاهزة
-document.getElementById("f").addEventListener("submit", e => {
-  e.preventDefault();
-  const n = document.getElementById("f-name").value.trim();
-  const b = document.getElementById("f-biz").value.trim();
-  window.open(waLink("أهلاً، أنا " + n + ". شغلي: " + b + ". عايز نسخة تجريبية."), "_blank", "noopener");
-});
-
-// لوحة الطلبات التجريبية
-const states = ["new", "run", "done"];
-const label = { new: "جديد", run: "تحت التنفيذ", done: "خلص" };
-const data = [
-  { t: "عطل تكييف", s: "غرفة نوم، مدينة نصر", st: 0 },
-  { t: "تسريب مياه", s: "مطبخ، الدقي", st: 1 },
-  { t: "صيانة غسالة", s: "المعادي", st: 1 },
-  { t: "تغيير كوالين", s: "شقة 4، فيصل", st: 2 }
+/* ===== المدونة (مقالات داخل الصفحة) ===== */
+const POSTS = [
+  { tag: "إدارة شغلك", minutes: 4,
+    title: "5 علامات إن شغلك محتاج نظام إلكتروني بدل الورق والواتساب",
+    excerpt: "لو بتقعد نص يوم تسأل عن الطلبات وتكتبها في ورقة أو رسايل متفرقة، دي إشارات إن الوقت ضاع منك على التنظيم بدل الشغل.",
+    body: [
+      "كثير من الأنشطة الصغيرة تبدأ على ورقة ودفتر وواتساب، وتبقى شغالة في البداية، لكن مع زيادة الطلبات تبدأ مشاكل صغيرة تترك أثرها: طلب ضائع، ميعاد اتنسى، وفني عرف معلومة غلط. النظام الإلكتروني مش رفاهية؛ هو طريقة تحافظ على حق الشغل وحق العميل في نفس الوقت.",
+      "<h3>العلامات الخمس</h3><ul><li>الطلبات مكتوبة في أكتر من مكان: ورقة، رسالة واتساب، ملاحظة على الموبايل، ومش عارف توصل آخرها في الآخر.</li><li>كل طلب جديد بيطلب منك مكالمات كتير: مع العميل، مع الفني، مع المورد، والمعلومة بتتغير في كل مكالمة.</li><li>مش عارف بسرعة إيه الطلب الجديد وإيه اللي اتأخر وإيه اللي خلص، من غير ما تفتح المحادثات واحد واحد.</li><li>الفواتير والحساب بتاع نهاية اليوم أو الأسبوع بياخد وقت طويل في التجميع اليدوي، وغالبًا فيه فروق مش مفهومة.</li><li>لما بتجي تجرب موظف جديد أو تسند مهمة، تحتاج وقت طويل عشان ينظم معاك، لأن الشغل معلوماته في دماغك انت بس.</li></ul>",
+"<h3>إزاي تبدأ من غير تعقيد</h3>",
+      "مش لازم تنقل شغلك كله دفعة واحدة. تبدأ بالنقطة الألم: لو المشكلة في الطلبات، ابدأ بنموذج تسجيل طلبات واحد يجمع كل جديد في مكان واحد، وبعدها تضيف المتابعة والتقارير تدريجيًا. النسخة التجريبية على بياناتك الحقيقية هي أفضل طريقة تعرف إن الحل مناسب قبل ما تلتزم.",
+      "الهدف النهائي بسيط: تفتح شاشة واحدة تعرف منها إيه اللي محتاج قرار منك النهاردة، بدل ما الشغل كله يدور حولك أنت شخصيًا."
+    ] },
+  { tag: "متابعة الطلبات", minutes: 5,
+    title: "إزاي تتابع طلبات الصيانة من غير ما تسأل كل فني كل شوية",
+    excerpt: "المتابعة المستمرة بالمكالمات تستهلك وقت صاحب الشغل والفني معًا. النظام بيرتب الحالات ويخلي كل واحد يعرف المطلوب منه.",
+    body: [
+      "في مراكز الصيانة والخدمات المنزلية، أكبر ضياع للوقت بيكون في حلقة المتابعة: العميل يسأل وصلت إيه، صاحب المركز يسأل الفني، والفني بيرد على عشر مكالمات في وسط شغله. التنظيم الجديد بيحول السؤال من مكالمة فردية إلى حالة واضحة على النظام.",
+      "<h3>فكرة الحالات بدل الأسئلة</h3><ul><li>جديد: وصل الطلب ومستنى التسليم للفني المناسب.</li><li>تحت التنفيذ: الفني استلم الطلب وشغال عليه الآن.</li><li>تم الإنجاز: خلص وجاهز للتسليم أو المتابعة مع العميل.</li></ul>",
+"لما كل طلب له حالة ثابتة، يقدر العميل يستعلم برقم طلبه بنفسه، والفني يشوف المهام المسندة له بدون ما يتصل بالمدير، والمدير يشوف الطلبات المتأخرة سريعًا.",
+      "<h3>أشياء تضيفها مع النظام</h3>",
+      "ملاحظة داخل الطلب عن قطع الغيار المطلوبة، وميعاد تسليم متوقع، وصورة للعطل لو كانت مفيدة. كلها معلومات تتسجل مرة واحدة وقت الطلب، وتفضل مع الطلب لحد ما يخلص، بدل ما تتنقل شفهياً.",
+      "النتيجة العملية: وقت أقل في المكالمات، ووضوح أكبر للمسؤوليات، وشغل يقدر يتابعه صاحب النشاط حتى وهو مش موجود في المقر طول اليوم."
+    ] },
+  { tag: "خطوة أولى", minutes: 3,
+    title: "ليه نموذج الواتساب أول خطوة عملية للشركات الصغيرة",
+    excerpt: "أول نظام ما يحتاج يكون معقدًا. نموذج بسيط يجمع بيانات العملاء ويوصلها على واتساب يثبت الفكرة بأقل تكلفة وأسرع وقت.",
+    body: [
+      "الكثير من أصحاب الأنشطة يعتقدون إن التحول الإلكتروني معناه برنامج ضخم وتكلفة كبيرة وتدريب طويل. الواقع إن أول خطوة ممكن تكون بسيطة جدًا: نموذج إدخال واحد يجمع بيانات العميل ونوع الخدمة، ويوجهها مباشرة إلى واتساب صاحب النشاط أو المركز.",
+"<h3>ليه البداية كده عملية</h3><ul><li>العميل يعرف واتساب ويستخدمه بالفعل، فما يحتاج شرحًا لطريقة جديدة.</li><li>النموذج يقلل الأخطاء الناتجة عن الكلام الشفهي: البيانات مكتوبة وواضحة من أول إرسال.</li><li>صاحب الشغل يقدر يجرب الفكرة على طلبات حقيقية بأقل تكلفة، ويعدل الحقول حسب اللي بيحتاجه فعلاً.</li><li>النموذج الأول ده ممكن يتطور لاحقًا إلى نظام متابعة كامل بدون ما يتوقف شغله الحالي.</li></ul>",
+      "<h3>متى تنتقل للنظام الأكبر؟</h3>",
+      "لما الطلبات تكفي عن الحفظ اليدوي، وتظهر حاجة لمتابعة الحالات وتقارير نهاية الفترة، وقتها تضيف لوحة التحكم والتقارير على نفس الأساس اللي بدأته. التدرج ده أقل مخاطرة من القفز إلى نظام كبير قبل ما تتضح احتياجاتك.",
+      "الخلاصة: ابدأ صغير بوضوح، وشوف النتيجة على شغلك الحقيقي، وبعدين قرر التوسعة. ده بالضبط أسلوب النسخة التجريبية: تشوف الشغل قبل ما تدفع."
+    ] }
 ];
-const list = document.getElementById("reqs");
-function render() {
-  list.innerHTML = "";
-  data.forEach((r, i) => {
-    const li = document.createElement("li");
-    const b = document.createElement("button");
-    b.className = "req";
-    b.type = "button";
-    const k = states[r.st];
-    b.innerHTML = "<span>" + r.t + "<small>" + r.s + "</small></span><span class='tag t-" + k + "'>" + label[k] + "</span>";
-    b.onclick = () => { r.st = (r.st + 1) % 3; render(); };
-    li.appendChild(b);
-    list.appendChild(li);
-  });
-  states.forEach((k, i) => {
-    document.getElementById("n-" + k).textContent = data.filter(r => r.st === i).length;
-  });
+const bgList = document.getElementById("bg-list");
+const bgReader = document.getElementById("bg-reader");
+function renderBgCards(){
+  bgList.innerHTML = POSTS.map((p, i) => `
+    <button class="bg-card" type="button" data-i="${i}">
+<div class="bg-meta"><span class="bg-tag">${p.tag}</span><span>قراءة ${p.minutes} دقائق</span></div>
+      <h3>${p.title}</h3>
+      <p>${p.excerpt}</p>
+      <span class="bg-more">اقرأ المقال
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      </span>
+    </button>`).join("");
+  bgList.querySelectorAll(".bg-card").forEach(c => c.addEventListener("click", () => openPost(+c.dataset.i)));
 }
-render();
+function openPost(i){
+  const p = POSTS[i];
+  document.getElementById("bg-tag").textContent = p.tag;
+  document.getElementById("bg-min").textContent = "قراءة " + p.minutes + " دقائق";
+  document.getElementById("bg-title").textContent = p.title;
+  document.getElementById("bg-body").innerHTML = p.body.map(b => /^<h3|<ul|<li/.test(b) ? b : "<p>" + b + "</p>").join("");
+  bgList.classList.add("hidden");
+  bgReader.classList.add("on");
+  bgReader.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+document.getElementById("bg-back").addEventListener("click", () => {
+  bgReader.classList.remove("on");
+  bgList.classList.remove("hidden");
+});
+renderBgCards();
+
+/* ===== التتبع التجريبي ===== */
+const TK_STAGES = [
+  { title: "تم استلام الطلب", sub: "وصلت بياناتك وسُجلت في النظام" },
+  { title: "تم التأكيد وتسليم الجهة", sub: "راجعنا التفاصيل ووجهنا الطلب للمسؤول" },
+  { title: "قيد التنفيذ", sub: "الخدمة تحت العمل حاليًا" },
+  { title: "تم الإنجاز", sub: "جاهز للاستلام أو المتابعة النهائية" }
+];
+const TK_DEMO = {
+  "01011111111": { id: "#TRK-1042", service: "صيانة تكييف – وحدة سبليت", area: "مدينة نصر – القاهرة", date: "25 نوفمبر 2026", stage: 2, note: "تم فحص الوحدة وطلب قطعة الغيار" },
+  "01022222222": { id: "#TRK-1038", service: "حجز موعد كشف أسنان", area: "الدقي – الجيزة", date: "23 نوفمبر 2026", stage: 3, note: "تم التأكيد على الموعد برسالة" },
+  "01004869385": { id: "#TRK-1050", service: "استفسار عن نظام SMAF IT", area: "عن بُعد — واتساب", date: "28 نوفمبر 2026", stage: 1, note: "بانتظار رد الموعد التجريبي" }
+};
+const tkEmpty = document.getElementById("tk-empty");
+const tkResult = document.getElementById("tk-result");
+function tkNorm(v){ return v.replace(/[^\d+]/g,"").replace(/^\+20/,"0").replace(/^20/,"0"); }
+function tkShow(rec){
+  document.getElementById("tk-rId").textContent = rec.id;
+  document.getElementById("tk-rServ").textContent = rec.service;
+  document.getElementById("tk-rArea").textContent = rec.area;
+  document.getElementById("tk-rDate").textContent = rec.date;
+  const st = document.getElementById("tk-status");
+  const cls = rec.stage >= 3 ? "st-done" : rec.stage === 2 ? "st-run" : "st-new";
+  st.className = "tk-status " + cls;
+  st.textContent = TK_STAGES[rec.stage].title + (rec.note ? " — " + rec.note : "");
+  document.getElementById("tk-stepper").innerHTML = TK_STAGES.map((s, i) => {
+    const state = i < rec.stage ? "done" : i === rec.stage ? "cur" : "";
+    const icon = i < rec.stage
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>'
+: i === rec.stage
+      ? '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>';
+    return `<li class="tk-step ${state}"><span class="tk-dot">${icon}</span><span><b>${s.title}</b><small>${s.sub}</small></span></li>`;
+  }).join("");
+  tkEmpty.classList.remove("on");
+  tkResult.classList.add("on");
+  tkResult.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+function tkTrack(){
+  const rec = TK_DEMO[tkNorm(document.getElementById("tk-phone").value)];
+  if(rec){ tkShow(rec); }
+  else { tkResult.classList.remove("on"); tkEmpty.classList.add("on"); }
+}
+document.getElementById("tk-btn").addEventListener("click", tkTrack);
+document.getElementById("tk-phone").addEventListener("keydown", e => { if(e.key === "Enter") tkTrack(); });
+document.querySelectorAll(".tk-chip").forEach(c => c.addEventListener("click", () => {
+  document.getElementById("tk-phone").value = c.dataset.num;
+tkTrack();
+}));
+
+const originals = { t: {}, h: {} };
+document.querySelectorAll("[data-i18n]").forEach(el => { originals.t[el.dataset.i18n] = el.textContent; });
+document.querySelectorAll("[data-i18n-h]").forEach(el => { originals.h[el.dataset.i18nH] = el.innerHTML; });
+
+function applyLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  document.documentElement.dir = l === "en" ? "ltr" : "rtl";
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const k = el.dataset.i18n;
+    el.textContent = (l === "en" && I18N.en[k] !== undefined) ? I18N.en[k] : originals.t[k];
+  });
+  document.querySelectorAll("[data-i18n-h]").forEach(el => {
+    const k = el.dataset.i18nH;
+    el.innerHTML = (l === "en" && I18N.h.en[k] !== undefined) ? I18N.h.en[k] : originals.h[k];
+  });
+  document.getElementById("langBtn").textContent = l === "en" ? "ع" : "EN";
+  localStorage.setItem("smaf_lang", l);
+  render();
+}
+document.getElementById("langBtn").addEventListener("click", () => applyLang(lang === "en" ? "ar" : "en"));
+applyLang(lang);
 </script>
 </body>
 </html>

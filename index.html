@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"SMAF IT","url":"https://shaban39.github.io/my-site/","email":"tyer2265@gmail.com","telephone":"tel:+201004869385","areaServed":"Egypt","description":"أنظمة برمجية للشركات الصغيرة والمراكز الخدمية مبنية بـ Python وDjango مع نسخة تجريبية قبل الدفع.","makesOffer":{"@type":"Offer","itemOffered":{"@type":"Service","name":"أنظمة طلبات ومواعيد وتقارير"}}},"potentialAction":{"@type":"SearchAction","target":"https://shaban39.github.io/my-site/#demos","query-input":"required name=search_term_string"}}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"SMAF IT","url":"https://shaban39.github.io/my-site/","email":"tyer2265@gmail.com","telephone":"tel:+201004869385","areaServed":"Egypt","description":"أنظمة برمجية للشركات الصغيرة والمراكز الخدمية مبنية بـ Python وDjango مع نسخة تجريبية قبل الدفع.","makesOffer":{"@type":"Offer","itemOffered":{"@type":"Service","name":"أنظمة طلبات ومواعيد وتقارير"}},"potentialAction":{"@type":"SearchAction","target":"https://shaban39.github.io/my-site/#demos","query-input":"required name=search_term_string"}}
 </script>
 <style>
 :root{
@@ -183,6 +183,7 @@ nav a:hover{color:var(--cyan)}
 .frame .fmeta b{font-size:15.5px;color:var(--txt);display:block}
 .frame .fmeta span{font-size:13px;color:var(--muted)}
 @media(max-width:900px){.frames{grid-template-columns:1fr;max-width:480px;margin-inline:auto}}
+
 /* process */
 .steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
 .steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
@@ -212,6 +213,13 @@ nav a:hover{color:var(--cyan)}
 .chips span{background:var(--card-2);border:1px solid var(--line);border-radius:9px;padding:3px 13px;font-size:14px;color:var(--cyan)}
 .about-more{margin-top:16px;display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-weight:700;font-size:14.5px;text-decoration:none}
 @media(max-width:600px){.about-grid{grid-template-columns:1fr}}
+
+/* track strip */
+.tstrip{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px}
+.tstrip h3{color:var(--txt);font-size:18px;margin-bottom:6px}
+.tstrip p{font-size:14px;color:var(--muted);max-width:46ch}
+.tstrip .acts{display:flex;gap:12px;flex-wrap:wrap}
+
 /* faq */
 details{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 18px;margin-bottom:10px}
 summary{cursor:pointer;font-weight:700}
@@ -274,9 +282,6 @@ input:focus,select:focus{border-color:var(--cyan);outline:none}
 .art-body li{margin-bottom:8px}
 .bg-cta{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:22px;text-align:center}
 .bg-cta p{color:var(--muted);margin-bottom:14px;font-size:14.5px}
-.bg-pager{display:flex;justify-content:space-between;gap:12px;margin-top:26px;flex-wrap:wrap}
-.bg-pager button{background:none;border:0;color:var(--cyan);font:inherit;font-weight:600;font-size:14.5px;cursor:pointer;text-align:start;padding:4px 6px}
-.bg-pager button:hover{text-decoration:underline}
 
 /* tracker */
 .tk-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
@@ -317,8 +322,7 @@ input:focus,select:focus{border-color:var(--cyan);outline:none}
 .tk-step small{color:var(--faint);font-size:13px}
 .tk-step.cur b{color:var(--cyan)}
 .tk-note{background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.25);color:#e7cf8a;border-radius:14px;padding:15px 18px;font-size:14px;margin-top:18px}
-.tk-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-.tk-empty .tk-cta-row{justify-content:center}
+
 /* footer */
 footer{border-top:1px solid var(--line);padding:30px 0 22px}
 .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:28px}
@@ -341,7 +345,187 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
 </head>
 <body>
 
- <section id="services">
+<div class="promo" id="promo">
+  <div class="wrap">
+    <p>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <span data-i18n="promo">نسخة تجريبية مجانية على بيانات شغلك — اطلبها قبل ما تدفع أي حاجة</span>
+    </p>
+    <button id="promoClose" type="button" aria-label="إغلاق الشريط">×</button>
+  </div>
+</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home">
+      <span class="logo-mark">S</span>
+      <span><b>SMAF IT</b><small>Smart · Modern · Apps · Future</small></span>
+    </a>
+    <nav id="nav">
+      <a href="#demos" data-i18n="navDemos">نماذج شغلي</a>
+      <a href="#pricing" data-i18n="navPricing">الباقات</a>
+      <a href="#services" data-i18n="navServices">الخدمات</a>
+      <a href="#testimonials" data-i18n="navReviews">آراء العملاء</a>
+      <a href="#blog" data-i18n="navBlog">المدونة</a>
+      <a href="#about" data-i18n="navAbout">من نحن</a>
+      <a href="#track" data-i18n="navTrack">تتبع الطلب</a>
+    </nav>
+    <div class="tools">
+      <button class="lang-btn" id="langBtn" type="button" aria-label="تبديل اللغة">EN</button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="فتح القائمة">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <a class="btn btn-wa" href="#" data-wa="أهلاً، عايز أعرف أكتر عن النظام وأشوف نسخة تجريبية.">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-i18n="navWa">واتساب</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <span data-i18n="badge">أنظمة برمجية جاهزة تنمو مع شغلك</span>
+      </div>
+      <h1 data-i18n-h="heroTitle">طلبات الصيانة كلها في مكان واحد،<br>وكل فني عارف <em>شغله</em></h1>
+      <p class="lead" data-i18n="heroLead">بصمم وأبرمج لك نظام على مقاس مركزك بـ Python وDjango، بدل الورق والواتساب والإكسيل. تشوفه شغال على بياناتك قبل ما تدفع أي حاجة.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="#" data-wa="أهلاً، عايز نسخة تجريبية مجانية على شغلي.">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="ctaMain">اطلب نسخة تجريبية على واتساب</span>
+        </a>
+        <a class="btn btn-ghost" href="#demos" data-i18n="ctaDemos">شوف نماذج شغلي</a>
+      </div>
+      <ul class="ticks">
+        <li data-i18n="tick1">نسخة تجريبية مجانية</li>
+        <li data-i18n="tick2">بدون أي التزام</li>
+        <li data-i18n="tick3">دعم بعد التسليم</li>
+      </ul>
+      <div class="hero-stats">
+        <div class="stat"><b data-count="3">0</b><span data-i18n="stat1">نماذج حية شغالة</span></div>
+        <div class="stat"><b data-count="100" data-suffix="%">0</b><span data-i18n="stat2">نظام على مقاسك</span></div>
+        <div class="stat"><b data-count="12" data-suffix="+">0</b><span data-i18n="stat3">ميزة قابلة للتنفيذ</span></div>
+        <div class="stat"><b data-count="24">0</b><span data-i18n="stat4">ساعة دعم ومتابعة</span></div>
+      </div>
+    </div>
+
+    <div class="board" aria-label="لوحة طلبات تجريبية">
+      <div class="board-top"><strong data-i18n="boardTitle">لوحة الطلبات</strong><small data-i18n="boardHint">اضغط على أي طلب لتغيير حالته</small></div>
+      <div class="counts">
+        <div class="count c-new"><b id="n-new">0</b><span data-i18n="bNew">جديد</span></div>
+        <div class="count c-run"><b id="n-run">0</b><span data-i18n="bRun">تحت التنفيذ</span></div>
+        <div class="count c-done"><b id="n-done">0</b><span data-i18n="bDone">خلص</span></div>
+      </div>
+      <ul class="reqs" id="reqs"></ul>
+      <p class="note" data-i18n="boardNote">بيانات تجريبية للتوضيح فقط. النظام الحقيقي بيتعمل على بيانات شغلك.</p>
+    </div>
+  </div>
+</section>
+
+<section id="demos">
+  <div class="wrap">
+    <h2 data-i18n-h="demosTitle">شوف <span>شغلك</span> بنفسك</h2>
+    <p class="sub" data-i18n="demosSub">دي نماذج شغالة بتتفتح في صفحة جديدة. جربها زي ما العميل هيجربها.</p>
+    <div class="demos">
+      <a class="demo" href="order.html" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 005.4-5.4l-2.7 2.7-2-.7-.7-2 2.7-2.7z"/></svg></span>
+        <h3 data-i18n="d1t">اطلب صنايعي</h3>
+        <p data-i18n="d1p">العميل يسجّل طلب الصيانة، ويوصل لفنيين يقدموا عروضهم عليه.</p>
+        <em data-i18n="openDemo">افتح النموذج ←</em>
+      </a>
+      <a class="demo" href="restaurant.html" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M7 3v7M7 10a2 2 0 012 2v9M7 10a2 2 0 00-2 2v9M16 3c-1.6 1.8-2.2 4.6-2.2 6.8 0 1.9.5 3.2 2.2 3.7V21"/></svg></span>
+        <h3 data-i18n="d2t">بيت المشاوي</h3>
+        <p data-i18n="d2p">صفحة مطعم بمنيو وطلب أونلاين، تثبت إن نفس الفكرة بتتفصّل لأي نشاط.</p>
+        <em data-i18n="openDemo">افتح النموذج ←</em>
+      </a>
+      <a class="demo" href="clinic.html" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>
+        <h3 data-i18n="d3t">عيادتي للحجز</h3>
+        <p data-i18n="d3p">نموذج حجز موعد مريض: التخصص والفترة والبيانات توصل المركز على واتساب.</p>
+        <em data-i18n="openDemo">افتح النموذج ←</em>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2 data-i18n-h="pricingTitle">باقات <span>تناسب حجم شغلك</span></h2>
+    <p class="sub" data-i18n="pricingSub">ابدأ بالحجم اللي يخدمك النهاردة، وتوسّع لما شغلك يكبر. السعر بيتكتب بوضوح بعد النسخة التجريبية وقبل أي دفع.</p>
+    <div class="pricing">
+      <div class="plan">
+        <div class="tagline" data-i18n="p1tag">لبداية منظّمة</div>
+        <h3 data-i18n="p1t">باقة البداية</h3>
+        <p class="desc" data-i18n="p1d">لنشاط صغير يجمع طلباته ومواعيده في مكان واحد بسيط.</p>
+        <ul>
+          <li data-i18n="p1f1"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>نموذج طلب أو حجز واحد شغال</li>
+          <li data-i18n="p1f2"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>إرسال مباشر على واتسابك</li>
+          <li data-i18n="p1f3"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>صفحة تعريفية بسيطة بالنشاط</li>
+          <li data-i18n="p1f4"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>تعديلات بسيطة عند التسليم</li>
+        </ul>
+        <a class="btn btn-ghost" href="#" data-wa="أهلاً، مهتم بباقة البداية، عايز تفاصيلها."><span data-i18n="p1cta">ابدأ التجربة</span></a>
+      </div>
+      <div class="plan hot">
+        <div class="tagline" data-i18n="p2tag">الأكثر طلبًا</div>
+        <h3 data-i18n="p2t">باقة النمو</h3>
+        <p class="desc" data-i18n="p2d">لنشاط عنده طلبات يومية ومحتاج متابعة واضحة وتقارير بدل الشغل اليدوي.</p>
+        <ul>
+          <li data-i18n="p2f1"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>كل مزايا باقة البداية</li>
+          <li data-i18n="p2f2"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>لوحة متابعة حالات الطلبات</li>
+          <li data-i18n="p2f3"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>حقول بيانات مخصصة لنشاطك</li>
+          <li data-i18n="p2f4"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>تقارير مختصرة للمتابعة الدورية</li>
+          <li data-i18n="p2f5"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>تدريب لك وللفريق على الاستخدام</li>
+        </ul>
+        <a class="btn btn-primary" href="#" data-wa="أهلاً، مهتم بباقة النمو، عايز أعرض نسخة تجريبية على شغلي."><span data-i18n="p2cta">اطلب عرض تجريبي</span></a>
+      </div>
+      <div class="plan">
+        <div class="tagline" data-i18n="p3tag">تشغيل متكامل</div>
+        <h3 data-i18n="p3t">باقة المؤسسات</h3>
+        <p class="desc" data-i18n="p3d">لجهة عندها أكثر من موظف أو فرع، ومحتاجة ربطًا شاملاً ودعمًا مستمرًا.</p>
+        <ul>
+          <li data-i18n="p3f1"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>كل مزايا باقة النمو</li>
+          <li data-i18n="p3f2"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>بوت ردود أولية على واتساب أو تيليجرام</li>
+          <li data-i18n="p3f3"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>صلاحيات متعددة للمستخدمين</li>
+          <li data-i18n="p3f4"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>نسخ احتياطي دوري للبيانات</li>
+          <li data-i18n="p3f5"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>دعم شهري مخصص وتطوير مستمر</li>
+        </ul>
+        <a class="btn btn-ghost" href="#" data-wa="أهلاً، مهتم بباقة المؤسسات وعايز نناقش المتطلبات."><span data-i18n="p3cta">ناقش متطلباتك</span></a>
+      </div>
+    </div>
+    <p class="plan-note" data-i18n="pricingNote">الأسعار تُحسب بعد المعاينة والنسخة التجريبية، وتُعرض مكتوبة بوضوح قبل أي دفع — والتجربة نفسها بدون مقابل.</p>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <h2 data-i18n-h="galleryTitle">شاشات <span>حية من النماذج</span></h2>
+    <p class="sub" data-i18n="gallerySub">كل بطاقة بتفتح نموذجًا حقيقيًا شغالًا الآن — جرّب وتنقل بين الخطوات زي أي عميل.</p>
+    <div class="frames">
+      <a class="frame" href="order.html" target="_blank" rel="noopener">
+        <div class="browser"><span class="bd b1"></span><span class="bd b2"></span><span class="bd b3"></span><span class="url">shaban39.github.io/my-site/order.html</span></div>
+        <div class="mock"><span class="mbar w80"></span><span class="mbar w60"></span><span class="mchip"></span><span class="mbar w40"></span></div>
+        <div class="fmeta"><b data-i18n="g1t">نموذج اطلب صنايعي</b><span data-i18n="g1d">تسجيل طلب صيانة وتتبع حالته</span></div>
+      </a>
+      <a class="frame" href="restaurant.html" target="_blank" rel="noopener">
+        <div class="browser"><span class="bd b1"></span><span class="bd b2"></span><span class="bd b3"></span><span class="url">shaban39.github.io/my-site/restaurant.html</span></div>
+        <div class="mock"><span class="mbar w60"></span><span class="mbar w80"></span><span class="mchip"></span><span class="mbar w40"></span></div>
+        <div class="fmeta"><b data-i18n="g2t">بيت المشاوي</b><span data-i18n="g2d">منيو مطعم وطلب أونلاين</span></div>
+      </a>
+      <a class="frame" href="clinic.html" target="_blank" rel="noopener">
+        <div class="browser"><span class="bd b1"></span><span class="bd b2"></span><span class="bd b3"></span><span class="url">shaban39.github.io/my-site/clinic.html</span></div>
+        <div class="mock"><span class="mbar w80"></span><span class="mbar w40"></span><span class="mchip"></span><span class="mbar w60"></span></div>
+        <div class="fmeta"><b data-i18n="g3t">عيادتي للحجز</b><span data-i18n="g3d">حجز مواعيد التخصصات الطبية</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
   <div class="wrap">
     <h2 data-i18n-h="servicesTitle">إيه اللي <span>أقدر أعمله</span> لك</h2>
     <p class="sub" data-i18n="servicesSub">حلول برمجية متكاملة مصممة على طريقة شغلك الفعلية.</p>
@@ -354,7 +538,7 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
       <div class="card">
         <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 12l3-3 3 2 4-4"/></svg></span>
         <h3 data-i18n="sv2t">لوحة تحكم إدارية</h3>
-<p data-i18n="sv2p">الطلبات الجديدة والمتأخرة وأداء كل فني قدامك على طول، في شاشة واحدة واضحة.</p>
+        <p data-i18n="sv2p">الطلبات الجديدة والمتأخرة وأداء كل فني قدامك على طول، في شاشة واحدة واضحة.</p>
       </div>
       <div class="card">
         <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.7a8.5 8.5 0 017 4.7 8.38 8.38 0 01.9 3.8z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg></span>
@@ -368,7 +552,7 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
       </div>
       <div class="card">
         <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
-<h3 data-i18n="sv5t">أمان ونسخ احتياطي</h3>
+        <h3 data-i18n="sv5t">أمان ونسخ احتياطي</h3>
         <p data-i18n="sv5p">بياناتك محمية دائمًا: صلاحيات للمستخدمين، ونسخ يومية آمنة.</p>
       </div>
       <div class="card">
@@ -388,7 +572,7 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
     <h2 data-i18n-h="processTitle">بنشتغل على <span>3 خطوات</span></h2>
     <ol class="steps">
       <li><h3 data-i18n="st1t">نتكلم عن شغلك</h3><p data-i18n="st1p">احكيلي بتشتغل إزاي وإيه اللي بيتعبك في اليوم العادي.</p></li>
-<li><h3 data-i18n="st2t">أوريك نسخة تجريبية</h3><p data-i18n="st2p">تشوف النظام شغال على بيانات شغلك قبل أي دفع.</p></li>
+      <li><h3 data-i18n="st2t">أوريك نسخة تجريبية</h3><p data-i18n="st2p">تشوف النظام شغال على بيانات شغلك قبل أي دفع.</p></li>
       <li><h3 data-i18n="st3t">أسلّم وأدرّب فريقك</h3><p data-i18n="st3p">النظام يشتغل عندك وأفضل جنبك للدعم والتعديلات.</p></li>
     </ol>
   </div>
@@ -402,21 +586,21 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
       <div class="tcard">
         <div class="stars" aria-label="تقييم 5 من 5">
           <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg>
-</div>
+        </div>
         <p data-i18n="rv1p">كنت بتابع الطلبات على الواتساب والورق. النموذج وضحلي إزاي أرتبها، وبعد التجربة على بياناتي قررت أبدأ بالنظام كامل من غير تردد.</p>
         <div class="twho"><span class="av" aria-hidden="true">أ</span><span><b data-i18n="rv1n">أحمد م.</b><small data-i18n="rv1r">مركز صيانة تكييفات</small></span></div>
       </div>
       <div class="tcard">
         <div class="stars" aria-label="تقييم 5 من 5">
           <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg>
-</div>
+        </div>
         <p data-i18n="rv2p">المواعيد بقت محجوزة من غير مكالمات كثيرة، والرسالة بتوصل كاملة بالبيانات المطلوبة بدل ما نكتبها يدويًا في كل اتصال.</p>
         <div class="twho"><span class="av" aria-hidden="true">س</span><span><b data-i18n="rv2n">د. سارة</b><small data-i18n="rv2r">عيادة أسنان</small></span></div>
       </div>
       <div class="tcard">
         <div class="stars" aria-label="تقييم 5 من 5">
           <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3 6.3 20.3l1.1-6.3L2.8 9.5l6.4-.9z"/></svg>
-</div>
+        </div>
         <p data-i18n="rv3p">اللي فرق معايا إني شفت النظام على بياناتي قبل ما أدفع، فكنت عارف بالظبط هاخد إيه، ومفيش مفاجآت في السعر أو المميزات.</p>
         <div class="twho"><span class="av" aria-hidden="true">م</span><span><b data-i18n="rv3n">محمود ع.</b><small data-i18n="rv3r">مطعم</small></span></div>
       </div>
@@ -433,10 +617,6 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
         <h2 style="margin-bottom:14px" data-i18n-h="aboutTitle">مين اللي هيشتغل معاك</h2>
         <p data-i18n="aboutP">أنا مبرمج وصاحب SMAF IT، بشتغل بـ Python وDjango. بتعامل مع صاحب الشغل مباشرة: بسمع منه، وبعمل النظام على مقاس شغله، وبفضل متاح بعد التسليم للدعم والتعديلات. مفيش وسيط ومفيش وعود فاضية — النسخة التجريبية هي اللي بتتكلم.</p>
         <div class="chips"><span>Python</span><span>Django</span><span>واتساب</span><span>تيليجرام</span><span>تقارير Excel</span></div>
-<div class="cta-row" style="margin-top:20px">
-          <a class="btn btn-wa" href="#" data-wa="أهلاً، أنا صاحب نشاط وعايز نسخة تجريبية على بيانات شغلي."><span data-i18n="abCtaWa">اطلب نسخة تجريبية</span></a>
-          <a class="btn btn-ghost" href="#demos" data-i18n="abCtaSamples">شوف النماذج الشغالة</a>
-        </div>
       </div>
     </div>
     <h2 style="margin:34px 0 6px" data-i18n-h="abJourneyTitle">رحلة الشغل <span>بثلاث مراحل</span></h2>
@@ -451,7 +631,7 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
         <div>
           <h3 data-i18n="ab2t">بناء نماذج توضيحية شغالة</h3>
           <p data-i18n="ab2p">ثلاثة نماذج منشورة للعينة: طلب صنايعي، صفحة مطعم بمنيو، ونموذج حجز مواعيد عيادة — كل واحد يفتح ويجرب فعليًا، ويوضح إن الفكرة نفسها تتفصّل لأي نشاط.</p>
-</div>
+        </div>
       </li>
       <li>
         <div>
@@ -470,7 +650,7 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
       </div>
       <div class="ab-pcard">
         <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></span>
-<h3 data-i18n="abp2t">على مقاس شغلك</h3>
+        <h3 data-i18n="abp2t">على مقاس شغلك</h3>
         <p data-i18n="abp2p">مش قالب جاهز يتقفل عليه نشاطك؛ النظام يتبع طريقة شغلك الفعلية في الطلبات والمواعيد والمتابعة.</p>
       </div>
       <div class="ab-pcard">
@@ -489,7 +669,7 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
 </section>
 
 <section id="blog">
-<div class="wrap">
+  <div class="wrap">
     <h2 data-i18n-h="blogTitleH">المدونة <span>ومقالات عملية</span></h2>
     <p class="sub" data-i18n="blogSub">ثلاث مقالات قصيرة لصاحب النشاط الصغير: تنظيم الطلبات، اختيار أول نظام، وبداية الواتساب العملية.</p>
     <div class="bg-grid" id="bg-list"></div>
@@ -504,10 +684,6 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
       <div class="bg-cta">
         <p data-i18n="blogCtaText">جربت الفكرة وعايز نظام على مقاس شغلك؟ اطلب نسخة تجريبية تشوفها قبل أي التزام.</p>
         <a class="btn btn-wa" href="#" data-wa="قرأت مقال في المدونة وعايز أطلب نسخة تجريبية لنشاطي." data-i18n="blogCtaBtn">اطلب نسخة تجريبية</a>
-</div>
-      <div class="bg-pager">
-        <button id="bg-prev" type="button"></button>
-        <button id="bg-next" type="button"></button>
       </div>
     </div>
   </div>
@@ -526,16 +702,13 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
       <p class="tk-hint" data-i18n="tkHint">جرّب أرقامًا تجريبية للعرض:</p>
       <div class="tk-chips">
         <button class="tk-chip" type="button" data-num="01011111111">0101 111 1111 — <span data-i18n="tkChip1">قيد التنفيذ</span></button>
-<button class="tk-chip" type="button" data-num="01022222222">0102 222 2222 — <span data-i18n="tkChip2">تم الإنجاز</span></button>
+        <button class="tk-chip" type="button" data-num="01022222222">0102 222 2222 — <span data-i18n="tkChip2">تم الإنجاز</span></button>
         <button class="tk-chip" type="button" data-num="01004869385">0100 486 9385 — <span data-i18n="tkChip3">طلب استفسار</span></button>
       </div>
     </div>
     <div class="tk-empty" id="tk-empty">
       <b data-i18n="tkEmptyT">مفيش طلب مسجل بهذا الرقم</b>
       <span data-i18n="tkEmptyP">تأكد من كتابة الرقم كاملًا، أو ابعت رسالة على واتساب وسنراجع طلبك مباشرة.</span>
-      <div class="tk-cta-row">
-        <a class="btn btn-wa" href="#" data-wa="أهلاً، بحثت برقمي في صفحة التتبع ومفيش نتيجة، محتاج مساعدة." data-i18n="tkEmptyCta">استفسر على واتساب</a>
-      </div>
     </div>
     <div class="tk-result" id="tk-result">
       <div class="tk-summary">
@@ -543,16 +716,13 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
         <div class="tk-grid">
           <div class="tk-item"><b data-i18n="tkId">رقم الطلب</b><span id="tk-rId"></span></div>
           <div class="tk-item"><b data-i18n="tkServ">نوع الخدمة</b><span id="tk-rServ"></span></div>
-<div class="tk-item"><b data-i18n="tkArea">المنطقة</b><span id="tk-rArea"></span></div>
+          <div class="tk-item"><b data-i18n="tkArea">المنطقة</b><span id="tk-rArea"></span></div>
           <div class="tk-item"><b data-i18n="tkDate">التاريخ</b><span id="tk-rDate"></span></div>
         </div>
         <div class="tk-status" id="tk-status"></div>
       </div>
       <ul class="tk-steps" id="tk-stepper"></ul>
       <p class="tk-note" data-i18n="tkNote">الصفحة نموذج تجريبي يوضح شكل تتبع الطلب للعميل؛ بعد بناء نظام نشاطك الفعلي تُربط الحالات الحقيقية ببيانات الطلبات، ويبقى العميل على اطلاع من نفس الصفحة.</p>
-      <div class="tk-cta-row">
-        <a class="btn btn-primary" href="#" data-wa="أهلاً، عايز نظام تتبع طلبات مشابه لشغلي." data-i18n="tkResultCta">اطلب نظام تتبع لشغلك</a>
-      </div>
     </div>
   </div>
 </section>
@@ -561,12 +731,12 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
   <div class="wrap">
     <h2 data-i18n-h="faqTitle">أسئلة <span>شائعة</span></h2>
     <details><summary data-i18n="fq1q">محتاج أفهم في البرمجة عشان أستخدمه؟</summary><p data-i18n="fq1a">لأ. النظام بيتعمل بحيث تستخدمه من أول يوم، وبدرّبك انت والفنيين عليه.</p></details>
-<details><summary data-i18n="fq2q">إمتى أشوف النسخة التجريبية؟</summary><p data-i18n="fq2a">بعد ما نتكلم عن شغلك نحدد ميعاد قريب، وتشوفها من غير أي التزام.</p></details>
+    <details><summary data-i18n="fq2q">إمتى أشوف النسخة التجريبية؟</summary><p data-i18n="fq2a">بعد ما نتكلم عن شغلك نحدد ميعاد قريب، وتشوفها من غير أي التزام.</p></details>
     <details><summary data-i18n="fq3q">السعر كام؟</summary><p data-i18n="fq3a">بيتحدد حسب احتياج شغلك بعد المعاينة. هقولك سعر مكتوب وواضح بعد النسخة التجريبية وقبل ما تدفع أي حاجة، والتجربة نفسها بدون مقابل.</p></details>
     <details><summary data-i18n="fq4q">البيانات بتاعتي أمانها إزاي؟</summary><p data-i18n="fq4a">البيانات محفوظة في قاعدة بيانات محمية مع نسخ يومية، وكل مستخدم له صلاحياته هو بس.</p></details>
     <details><summary data-i18n="fq5q">هل النظام شغال على الموبايل والكمبيوتر؟</summary><p data-i18n="fq5a">أيوه. الواجهة متجاوبة: العميل يستخدمها من موبايله، ولوحة المتابعة عندك تفتح على الموبايل والكمبيوتر بنفس الوضوح.</p></details>
     <details><summary data-i18n="fq6q">بعد التسليم أقدر أعدل أو أضيف ميزات؟</summary><p data-i18n="fq6a">بالتأكيد. باقات الدعم تشمل تعديلات وإضافات على نفس النظام، وكل ميزة جديدة بتتوضح تكلفتها قبل تنفيذها.</p></details>
-<details><summary data-i18n="fq7q">كم بيستغرق التسليم؟</summary><p data-i18n="fq7a">نموذج البداية يظهر تجريبيًا خلال أيام بعد أول تواصل؛ النظام الأكبر تتحدد مدته بعد المعاينة وتُذكر في العرض قبل البدء.</p></details>
+    <details><summary data-i18n="fq7q">كم بيستغرق التسليم؟</summary><p data-i18n="fq7a">نموذج البداية يظهر تجريبيًا خلال أيام بعد أول تواصل؛ النظام الأكبر تتحدد مدته بعد المعاينة وتُذكر في العرض قبل البدء.</p></details>
     <details><summary data-i18n="fq8q">بياناتي الحالية على الورق أو الإكسيل تنتقل للنظام؟</summary><p data-i18n="fq8a">نعم، نجهز بياناتك الحالية وتُدخل عند بدء التشغيل، وتبقى متاحة للاستعلام والتصدير في أي وقت.</p></details>
   </div>
 </section>
@@ -580,7 +750,7 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
         <label><span data-i18n="fName">اسمك</span><input id="f-name" name="name" autocomplete="name" required></label>
         <div class="fgrid">
           <label><span data-i18n="fPhone">رقم الموبايل</span><input id="f-phone" name="phone" inputmode="tel" dir="ltr" autocomplete="tel" required></label>
-<label><span data-i18n="fActivity">نوع النشاط</span>
+          <label><span data-i18n="fActivity">نوع النشاط</span>
             <select id="f-activity" name="activity" required>
               <option value="" data-i18n="fActPh">اختر النشاط</option>
               <option data-i18n="act1">مركز صيانة / خدمات منزلية</option>
@@ -594,15 +764,14 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
         </div>
         <label><span data-i18n="fBiz">وصف مختصر لشغلك</span><input id="f-biz" name="biz" placeholder="مثال: مركز صيانة تكييفات بمنطقة مدينة نصر" required></label>
         <button class="btn btn-wa" type="submit" style="justify-content:center">
-          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0
-05.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           <span data-i18n="fSubmit">ابعت الطلب على واتساب</span>
         </button>
       </form>
       <p class="alt"><span data-i18n="altPre">أو كلمني مباشرة على</span> <a href="#" data-wa="أهلاً، عايز أستفسر عن نظام SMAF IT." data-i18n="altWa">واتساب</a> <span data-i18n="altOr">أو على</span> <a href="mailto:tyer2265@gmail.com">tyer2265@gmail.com</a></p>
       <div class="num">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-<a href="#" data-wa="أهلاً، عايز أستفسر عن نظام SMAF IT." dir="ltr">0100 486 9385</a>
+        <a href="#" data-wa="أهلاً، عايز أستفسر عن نظام SMAF IT." dir="ltr">0100 486 9385</a>
       </div>
     </div>
   </div>
@@ -627,7 +796,7 @@ html[dir="ltr"] .ticks li::before{margin-inline-end:6px}
         <a href="#testimonials" data-i18n="navReviews">آراء العملاء</a>
         <a href="#blog" data-i18n="navBlog">المدونة</a>
         <a href="#about" data-i18n="navAbout">من نحن</a>
-</div>
+      </div>
       <div>
         <h4 data-i18n="footContact">تواصل</h4>
         <a href="#" data-wa="أهلاً، عايز أستفسر عن نظام SMAF IT." data-i18n="footWa">واتساب: 0100 486 9385</a>
@@ -668,7 +837,7 @@ nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => nav.cla
 /* ===== عدادات متحركة ===== */
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 function animateCounter(el){
-const target = +el.dataset.count;
+  const target = +el.dataset.count;
   const suffix = el.dataset.suffix || "";
   if(reduceMotion){ el.textContent = target + suffix; return; }
   const t0 = performance.now(), dur = 1000;
@@ -693,7 +862,7 @@ const stateLabel = {
 const states = ["new", "run", "done"];
 const data = [
   { t: "عطل تكييف", s: "غرفة نوم، مدينة نصر", st: 0 },
-{ t: "تسريب مياه", s: "مطبخ، الدقي", st: 1 },
+  { t: "تسريب مياه", s: "مطبخ، الدقي", st: 1 },
   { t: "صيانة غسالة", s: "المعادي", st: 1 },
   { t: "تغيير كوالين", s: "شقة 4، فيصل", st: 2 }
 ];
@@ -709,7 +878,7 @@ function render(){
     b.onclick = () => { r.st = (r.st + 1) % 3; render(); };
     li.appendChild(b); list.appendChild(li);
   });
-    states.forEach((k, i) => {
+  states.forEach((k, i) => {
     document.getElementById("n-" + k).textContent = data.filter(r => r.st === i).length;
   });
 }
@@ -720,7 +889,7 @@ document.getElementById("f").addEventListener("submit", e => {
   e.preventDefault();
   const n = document.getElementById("f-name").value.trim();
   const ph = document.getElementById("f-phone").value.trim();
-const act = document.getElementById("f-activity");
+  const act = document.getElementById("f-activity");
   const biz = document.getElementById("f-biz").value.trim();
   if(!n || !ph || !act.value || !biz){
     alert("من فضلك اكمل الاسم ورقم الموبايل واختر النشاط واكتب وصفًا مختصرًا.");
@@ -742,7 +911,7 @@ const I18N = {
     navBlog: "Blog", navAbout: "About", navTrack: "Track order", navWa: "WhatsApp",
     badge: "Ready-made software that grows with your business",
     heroLead: "I design and build you a Python & Django system tailored to your shop — replacing paper, WhatsApp chats and Excel. You see it working on your data before you pay anything.",
-ctaMain: "Request a free demo on WhatsApp", ctaDemos: "See my live samples",
+    ctaMain: "Request a free demo on WhatsApp", ctaDemos: "See my live samples",
     tick1: "Free trial version", tick2: "No commitment", tick3: "Support after delivery",
     stat1: "Live samples running", stat2: "Fully customized", stat3: "Features available", stat4: "Support hours",
     boardTitle: "Requests board", boardHint: "Tap any request to change its status",
@@ -753,7 +922,7 @@ ctaMain: "Request a free demo on WhatsApp", ctaDemos: "See my live samples",
     d2t: "BBQ House", d2p: "Restaurant page with menu and online ordering — the same idea fits any business.",
     d3t: "Clinic Booking", d3p: "Patient appointment booking: specialty, time slot and details sent to the clinic on WhatsApp.",
     openDemo: "Open sample ←",
-pricingSub: "Start with the size that serves you today, and grow as your business grows. The price is stated clearly after the demo and before any payment.",
+    pricingSub: "Start with the size that serves you today, and grow as your business grows. The price is stated clearly after the demo and before any payment.",
     p1tag: "For an organized start", p1t: "Starter package", p1d: "For a small business that gathers its requests and bookings in one simple place.",
     p1f1: "One working request or booking form", p1f2: "Direct delivery to your WhatsApp", p1f3: "Simple business profile page", p1f4: "Minor adjustments at handover",
     p1cta: "Start the trial",
@@ -761,7 +930,7 @@ pricingSub: "Start with the size that serves you today, and grow as your busines
     p2f1: "Everything in the Starter package", p2f2: "Request-status tracking dashboard", p2f3: "Custom data fields for your business", p2f4: "Concise periodic reports", p2f5: "Training for you and your team",
     p2cta: "Request a demo",
     p3tag: "Full-scale operation", p3t: "Business package", p3d: "For an entity with multiple staff or branches needing full integration and ongoing support.",
-p3f1: "Everything in the Growth package", p3f2: "Initial-reply bot on WhatsApp or Telegram", p3f3: "Multiple-user permissions", p3f4: "Scheduled data backups", p3f5: "Dedicated monthly support and development",
+    p3f1: "Everything in the Growth package", p3f2: "Initial-reply bot on WhatsApp or Telegram", p3f3: "Multiple-user permissions", p3f4: "Scheduled data backups", p3f5: "Dedicated monthly support and development",
     p3cta: "Discuss your requirements",
     pricingNote: "Pricing is set after the review and demo, and shown in writing before any payment — the trial itself is free.",
     gallerySub: "Each card opens a real, currently working sample — try and walk through the steps like any customer.",
@@ -770,7 +939,7 @@ p3f1: "Everything in the Growth package", p3f2: "Initial-reply bot on WhatsApp o
     g3t: "Clinic booking", g3d: "Medical specialty appointment booking",
     servicesSub: "Integrated software solutions designed around how you actually work.",
     sv1t: "Requests & bookings system", sv1p: "Every request logged with its status, assigned technician, and tracked with the customer until completion — no paper or lost messages.",
-sv2t: "Admin dashboard", sv2p: "New and overdue requests and each technician’s performance on one clear screen.",
+    sv2t: "Admin dashboard", sv2p: "New and overdue requests and each technician’s performance on one clear screen.",
     sv3t: "WhatsApp & Telegram bot", sv3p: "Replies to customers and logs requests automatically even when you’re away from your phone.",
     sv4t: "Ready reports", sv4p: "Excel and PDF summaries you can send to your accountant or partner without manual aggregation.",
     sv5t: "Security & backups", sv5p: "Your data stays protected: user permissions and safe daily backups.",
@@ -779,7 +948,7 @@ sv2t: "Admin dashboard", sv2p: "New and overdue requests and each technician’s
     st2t: "I show you a demo", st2p: "You see the system running on your business data before any payment.",
     st3t: "Handover & team training", st3p: "The system goes live with ongoing support and adjustments.",
     reviewsSub: "Illustrative examples of the impact on day-to-day follow-up.",
-rv1p: "I used to track requests on WhatsApp and paper. The sample showed me how to organize them, and after trying it on my own data I decided to go ahead with the full system.",
+    rv1p: "I used to track requests on WhatsApp and paper. The sample showed me how to organize them, and after trying it on my own data I decided to go ahead with the full system.",
     rv1n: "Ahmed M.", rv1r: "Air-conditioning maintenance center",
     rv2p: "Appointments get booked without many calls, and the message arrives with all required details instead of being written manually on every contact.",
     rv2n: "Dr. Sara", rv2r: "Dental clinic",
@@ -787,13 +956,17 @@ rv1p: "I used to track requests on WhatsApp and paper. The sample showed me how 
     rv3n: "Mahmoud A.", rv3r: "Restaurant",
     rvNote: "Cards are illustrative samples for the section layout; replace them with your real customer reviews after your first handovers.",
     aboutP: "I am the developer behind SMAF IT, working with Python and Django. I deal directly with the business owner: I listen, build the system around their actual workflow, and stay available after handover for support and adjustments. No middlemen and no empty promises — the demo speaks for itself.",
-fq1q: "Do I need programming knowledge to use it?", fq1a: "No. The system is built to be used from day one, and I train you and your team on it.",
+    aboutMore: "Read more about how we work ←",
+    trackTitle: "Your customer tracks their own request",
+    trackP: "A simple tracking page: the customer enters their number and sees the request stage without calling you every time.",
+    trackBtn1: "Try the tracking page", trackBtn2: "Explain the idea to me",
+    fq1q: "Do I need programming knowledge to use it?", fq1a: "No. The system is built to be used from day one, and I train you and your team on it.",
     fq2q: "When do I see the demo?", fq2a: "After we discuss your business we set a near-term appointment, and you see it with no commitment.",
     fq3q: "What is the price?", fq3a: "It is set according to your business needs after the review. You receive a clear written price after the demo and before any payment; the trial itself is free.",
     fq4q: "How is my data protected?", fq4a: "Data lives in a secured database with daily backups, and each user only has their own permissions.",
     fq5q: "Does the system work on mobile and desktop?", fq5a: "Yes. The interface is responsive: customers use it on their phones, and your tracking dashboard opens equally clearly on mobile and desktop.",
     fq6q: "Can I modify or add features after handover?", fq6a: "Certainly. Support packages include adjustments and additions on the same system, and the cost of each new feature is clarified before implementation.",
-fq7q: "How long does delivery take?", fq7a: "The starter sample appears as a demo within days after first contact; larger systems have their timeline defined after review and stated in the proposal before starting.",
+    fq7q: "How long does delivery take?", fq7a: "The starter sample appears as a demo within days after first contact; larger systems have their timeline defined after review and stated in the proposal before starting.",
     fq8q: "Can my current paper or Excel data move into the system?", fq8a: "Yes, we prepare and import your existing data when operations start, and it stays available for lookup and export at any time.",
     contactSub: "Send your details and we’ll schedule a demo on your business — with no commitment.",
     fName: "Your name", fPhone: "Mobile number", fActivity: "Business type",
@@ -801,7 +974,7 @@ fq7q: "How long does delivery take?", fq7a: "The starter sample appears as a dem
     act3: "Restaurant or café", act4: "Salon or beauty center", act5: "Small company / office", act6: "Other business",
     fBiz: "Short description of your business", fSubmit: "Send request on WhatsApp",
     altPre: "Or reach me directly on", altWa: "WhatsApp", altOr: "or by email",
-footAbout: "Software systems for small businesses and service centers, built around your workflow with a pre-payment demo and post-delivery support.",
+    footAbout: "Software systems for small businesses and service centers, built around your workflow with a pre-payment demo and post-delivery support.",
     footLinks: "Quick links", footContact: "Contact", footWa: "WhatsApp: 0100 486 9385",
     footCopy: "© SMAF IT · All rights reserved · Python & Django"
   },
@@ -829,16 +1002,13 @@ Object.assign(I18N.en, {
   abp1t: "See the system before paying", abp1p: "A demo on your real business data that you and your team try before any commitment.",
   abp2t: "Built around your workflow", abp2p: "Not a generic template forced onto your business; the system follows how requests, appointments, and follow-ups actually run.",
   abp3t: "Support after handover", abp3p: "The relationship doesn't end at delivery: adjustments, new features, and ongoing answers to questions and issues.",
-abf1: "Live samples running", abf2: "Fully customized", abf3: "Features available", abf4: "Free trial version",
-  abCtaWa: "Request a free demo", abCtaSamples: "See the live samples",
+  abf1: "Live samples running", abf2: "Fully customized", abf3: "Features available", abf4: "Free trial version",
   blogSub: "Three short articles for small-business owners: organizing requests, choosing your first system, and starting with WhatsApp.",
   blogBack: "All articles", blogCtaText: "Liked the idea? Request a demo built around your business and see it before any commitment.", blogCtaBtn: "Request a free demo",
-  trackSub: "Demo sample: the customer enters their number and sees the current request stage without repeated calls.",
   tkLabel: "Mobile number", tkBtn: "Track", tkHint: "Try these demo numbers:",
   tkChip1: "In progress", tkChip2: "Completed", tkChip3: "Inquiry request",
   tkEmptyT: "No request found for this number", tkEmptyP: "Check the full number, or message us on WhatsApp and we'll review your request directly.",
-  tkEmptyCta: "Ask on WhatsApp", tkResultCta: "Request a tracking system for your business",
-tkSumT: "Request details", tkId: "Request number", tkServ: "Service type", tkArea: "Area", tkDate: "Date",
+  tkSumT: "Request details", tkId: "Request number", tkServ: "Service type", tkArea: "Area", tkDate: "Date",
   tkNote: "This page is a demo showing the customer-facing tracking experience. Once your real system is built, live request statuses connect to this page."
 });
 Object.assign(I18N.h.en, {
@@ -855,11 +1025,11 @@ const POSTS = [
     excerpt: "لو بتقعد نص يوم تسأل عن الطلبات وتكتبها في ورقة أو رسايل متفرقة، دي إشارات إن الوقت ضاع منك على التنظيم بدل الشغل.",
     body: [
       "كثير من الأنشطة الصغيرة تبدأ على ورقة ودفتر وواتساب، وتبقى شغالة في البداية، لكن مع زيادة الطلبات تبدأ مشاكل صغيرة تترك أثرها: طلب ضائع، ميعاد اتنسى، وفني عرف معلومة غلط. النظام الإلكتروني مش رفاهية؛ هو طريقة تحافظ على حق الشغل وحق العميل في نفس الوقت.",
-"<h3>العلامات الخمس</h3><ul><li>الطلبات مكتوبة في أكتر من مكان: ورقة، رسالة واتساب، ملاحظة على الموبايل، ومش عارف توصل آخرها في الآخر.</li><li>كل طلب جديد بيطلب منك مكالمات كتير: مع العميل، مع الفني، مع المورد، والمعلومة بتتغير في كل مكالمة.</li><li>مش عارف بسرعة إيه الطلب الجديد وإيه اللي اتأخر وإيه اللي خلص، من غير ما تفتح المحادثات واحد واحد.</li><li>الفواتير والحساب بتاع نهاية اليوم أو الأسبوع بياخد وقت طويل في التجميع اليدوي، وغالبًا فيه فروق مش مفهومة.</li><li>لما بتجي تجرب موظف جديد أو تسند مهمة، تحتاج وقت طويل عشان ينظم معاك، لأن الشغل معلوماته في دماغك انت بس.</li></ul>",
+      "<h3>العلامات الخمس</h3><ul><li>الطلبات مكتوبة في أكتر من مكان: ورقة، رسالة واتساب، ملاحظة على الموبايل، ومش عارف توصل آخرها في الآخر.</li><li>كل طلب جديد بيطلب منك مكالمات كتير: مع العميل، مع الفني، مع المورد، والمعلومة بتتغير في كل مكالمة.</li><li>مش عارف بسرعة إيه الطلب الجديد وإيه اللي اتأخر وإيه اللي خلص، من غير ما تفتح المحادثات واحد واحد.</li><li>الفواتير والحساب بتاع نهاية اليوم أو الأسبوع بياخد وقت طويل في التجميع اليدوي، وغالبًا فيه فروق مش مفهومة.</li><li>لما بتجي تجرب موظف جديد أو تسند مهمة، تحتاج وقت طويل عشان ينظم معاك، لأن الشغل معلوماته في دماغك انت بس.</li></ul>",
       "<h3>إزاي تبدأ من غير تعقيد</h3>",
       "مش لازم تنقل شغلك كله دفعة واحدة. تبدأ بالنقطة الألم: لو المشكلة في الطلبات، ابدأ بنموذج تسجيل طلبات واحد يجمع كل جديد في مكان واحد، وبعدها تضيف المتابعة والتقارير تدريجيًا. النسخة التجريبية على بياناتك الحقيقية هي أفضل طريقة تعرف إن الحل مناسب قبل ما تلتزم.",
       "الهدف النهائي بسيط: تفتح شاشة واحدة تعرف منها إيه اللي محتاج قرار منك النهاردة، بدل ما الشغل كله يدور حولك أنت شخصيًا."
-] },
+    ] },
   { tag: "متابعة الطلبات", minutes: 5,
     title: "إزاي تتابع طلبات الصيانة من غير ما تسأل كل فني كل شوية",
     excerpt: "المتابعة المستمرة بالمكالمات تستهلك وقت صاحب الشغل والفني معًا. النظام بيرتب الحالات ويخلي كل واحد يعرف المطلوب منه.",
@@ -869,7 +1039,7 @@ const POSTS = [
       "لما كل طلب له حالة ثابتة، يقدر العميل يستعلم برقم طلبه بنفسه، والفني يشوف المهام المسندة له بدون ما يتصل بالمدير، والمدير يشوف الطلبات المتأخرة سريعًا.",
       "<h3>أشياء تضيفها مع النظام</h3>",
       "ملاحظة داخل الطلب عن قطع الغيار المطلوبة، وميعاد تسليم متوقع، وصورة للعطل لو كانت مفيدة. كلها معلومات تتسجل مرة واحدة وقت الطلب، وتفضل مع الطلب لحد ما يخلص، بدل ما تتنقل شفهياً.",
-"النتيجة العملية: وقت أقل في المكالمات، ووضوح أكبر للمسؤوليات، وشغل يقدر يتابعه صاحب النشاط حتى وهو مش موجود في المقر طول اليوم."
+      "النتيجة العملية: وقت أقل في المكالمات، ووضوح أكبر للمسؤوليات، وشغل يقدر يتابعه صاحب النشاط حتى وهو مش موجود في المقر طول اليوم."
     ] },
   { tag: "خطوة أولى", minutes: 3,
     title: "ليه نموذج الواتساب أول خطوة عملية للشركات الصغيرة",
@@ -877,43 +1047,31 @@ const POSTS = [
     body: [
       "الكثير من أصحاب الأنشطة يعتقدون إن التحول الإلكتروني معناه برنامج ضخم وتكلفة كبيرة وتدريب طويل. الواقع إن أول خطوة ممكن تكون بسيطة جدًا: نموذج إدخال واحد يجمع بيانات العميل ونوع الخدمة، ويوجهها مباشرة إلى واتساب صاحب النشاط أو المركز.",
       "<h3>ليه البداية كده عملية</h3><ul><li>العميل يعرف واتساب ويستخدمه بالفعل، فما يحتاج شرحًا لطريقة جديدة.</li><li>النموذج يقلل الأخطاء الناتجة عن الكلام الشفهي: البيانات مكتوبة وواضحة من أول إرسال.</li><li>صاحب الشغل يقدر يجرب الفكرة على طلبات حقيقية بأقل تكلفة، ويعدل الحقول حسب اللي بيحتاجه فعلاً.</li><li>النموذج الأول ده ممكن يتطور لاحقًا إلى نظام متابعة كامل بدون ما يتوقف شغله الحالي.</li></ul>",
-"<h3>متى تنتقل للنظام الأكبر؟</h3>",
+      "<h3>متى تنتقل للنظام الأكبر؟</h3>",
       "لما الطلبات تكفي عن الحفظ اليدوي، وتظهر حاجة لمتابعة الحالات وتقارير نهاية الفترة، وقتها تضيف لوحة التحكم والتقارير على نفس الأساس اللي بدأته. التدرج ده أقل مخاطرة من القفز إلى نظام كبير قبل ما تتضح احتياجاتك.",
       "الخلاصة: ابدأ صغير بوضوح، وشوف النتيجة على شغلك الحقيقي، وبعدين قرر التوسعة. ده بالضبط أسلوب النسخة التجريبية: تشوف الشغل قبل ما تدفع."
     ] }
 ];
 const bgList = document.getElementById("bg-list");
 const bgReader = document.getElementById("bg-reader");
-const bgPrev = document.getElementById("bg-prev");
-const bgNext = document.getElementById("bg-next");
-let bgCur = 0;
-const minLabel = n => lang === "en" ? n + " min read" : "قراءة " + n + " دقائق";
 function renderBgCards(){
   bgList.innerHTML = POSTS.map((p, i) => `
     <button class="bg-card" type="button" data-i="${i}">
-      <div class="bg-meta"><span class="bg-tag">${p.tag}</span><span>${minLabel(p.minutes)}</span></div>
+      <div class="bg-meta"><span class="bg-tag">${p.tag}</span><span>قراءة ${p.minutes} دقائق</span></div>
       <h3>${p.title}</h3>
       <p>${p.excerpt}</p>
-<span class="bg-more">${lang === "en" ? "Read article" : "اقرأ المقال"}
+      <span class="bg-more">اقرأ المقال
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
       </span>
     </button>`).join("");
   bgList.querySelectorAll(".bg-card").forEach(c => c.addEventListener("click", () => openPost(+c.dataset.i)));
 }
-function updatePager(){
-  const prev = POSTS[(bgCur - 1 + POSTS.length) % POSTS.length];
-  const next = POSTS[(bgCur + 1) % POSTS.length];
-  bgPrev.textContent = (lang === "en" ? "Previous: " : "السابق: ") + prev.title.slice(0, 28) + "…";
-  bgNext.textContent = (lang === "en" ? "Next: " : "التالي: ") + next.title.slice(0, 28) + "…";
-}
 function openPost(i){
-  bgCur = i;
   const p = POSTS[i];
   document.getElementById("bg-tag").textContent = p.tag;
-  document.getElementById("bg-min").textContent = minLabel(p.minutes);
+  document.getElementById("bg-min").textContent = "قراءة " + p.minutes + " دقائق";
   document.getElementById("bg-title").textContent = p.title;
-document.getElementById("bg-body").innerHTML = p.body.map(b => /^<h3|<ul|<li/.test(b) ? b : "<p>" + b + "</p>").join("");
-  updatePager();
+  document.getElementById("bg-body").innerHTML = p.body.map(b => /^<h3|<ul|<li/.test(b) ? b : "<p>" + b + "</p>").join("");
   bgList.classList.add("hidden");
   bgReader.classList.add("on");
   bgReader.scrollIntoView({ behavior:"smooth", block:"start" });
@@ -922,18 +1080,15 @@ document.getElementById("bg-back").addEventListener("click", () => {
   bgReader.classList.remove("on");
   bgList.classList.remove("hidden");
 });
-bgPrev.addEventListener("click", () => openPost((bgCur - 1 + POSTS.length) % POSTS.length));
-bgNext.addEventListener("click", () => openPost((bgCur + 1) % POSTS.length));
 renderBgCards();
 
 /* ===== التتبع التجريبي ===== */
 const TK_STAGES = [
-  { ar: ["تم استلام الطلب", "وصلت بياناتك وسُجلت في النظام"], en: ["Received", "Your details were received and logged in the system"] },
-  { ar: ["تم التأكيد وتسليم الجهة", "راجعنا التفاصيل ووجهنا الطلب للمسؤول"], en: ["Confirmed & assigned", "We reviewed the details and routed the request to the responsible party"] },
-  { ar: ["قيد التنفيذ", "الخدمة تحت العمل حاليًا"], en: ["In progress", "The service is being worked on now"] },
-{ ar: ["تم الإنجاز", "جاهز للاستلام أو المتابعة النهائية"], en: ["Completed", "Ready for pickup or final follow-up"] }
+  { title: "تم استلام الطلب", sub: "وصلت بياناتك وسُجلت في النظام" },
+  { title: "تم التأكيد وتسليم الجهة", sub: "راجعنا التفاصيل ووجهنا الطلب للمسؤول" },
+  { title: "قيد التنفيذ", sub: "الخدمة تحت العمل حاليًا" },
+  { title: "تم الإنجاز", sub: "جاهز للاستلام أو المتابعة النهائية" }
 ];
-const tkLabel = (s, idx) => lang === "en" ? s.en[idx] : s.ar[idx];
 const TK_DEMO = {
   "01011111111": { id: "#TRK-1042", service: "صيانة تكييف – وحدة سبليت", area: "مدينة نصر – القاهرة", date: "25 نوفمبر 2026", stage: 2, note: "تم فحص الوحدة وطلب قطعة الغيار" },
   "01022222222": { id: "#TRK-1038", service: "حجز موعد كشف أسنان", area: "الدقي – الجيزة", date: "23 نوفمبر 2026", stage: 3, note: "تم التأكيد على الموعد برسالة" },
@@ -941,18 +1096,16 @@ const TK_DEMO = {
 };
 const tkEmpty = document.getElementById("tk-empty");
 const tkResult = document.getElementById("tk-result");
-let tkCurrent = null;
 function tkNorm(v){ return v.replace(/[^\d+]/g,"").replace(/^\+20/,"0").replace(/^20/,"0"); }
-function tkShow(rec, scroll){
-  tkCurrent = rec;
+function tkShow(rec){
   document.getElementById("tk-rId").textContent = rec.id;
-document.getElementById("tk-rServ").textContent = rec.service;
+  document.getElementById("tk-rServ").textContent = rec.service;
   document.getElementById("tk-rArea").textContent = rec.area;
   document.getElementById("tk-rDate").textContent = rec.date;
   const st = document.getElementById("tk-status");
   const cls = rec.stage >= 3 ? "st-done" : rec.stage === 2 ? "st-run" : "st-new";
   st.className = "tk-status " + cls;
-  st.textContent = tkLabel(TK_STAGES[rec.stage], 0) + (rec.note ? " — " + rec.note : "");
+  st.textContent = TK_STAGES[rec.stage].title + (rec.note ? " — " + rec.note : "");
   document.getElementById("tk-stepper").innerHTML = TK_STAGES.map((s, i) => {
     const state = i < rec.stage ? "done" : i === rec.stage ? "cur" : "";
     const icon = i < rec.stage
@@ -960,16 +1113,16 @@ document.getElementById("tk-rServ").textContent = rec.service;
       : i === rec.stage
       ? '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>'
       : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>';
-return `<li class="tk-step ${state}"><span class="tk-dot">${icon}</span><span><b>${tkLabel(s, 0)}</b><small>${tkLabel(s, 1)}</small></span></li>`;
+    return `<li class="tk-step ${state}"><span class="tk-dot">${icon}</span><span><b>${s.title}</b><small>${s.sub}</small></span></li>`;
   }).join("");
   tkEmpty.classList.remove("on");
   tkResult.classList.add("on");
-  if(scroll !== false) tkResult.scrollIntoView({ behavior:"smooth", block:"start" });
+  tkResult.scrollIntoView({ behavior:"smooth", block:"start" });
 }
 function tkTrack(){
   const rec = TK_DEMO[tkNorm(document.getElementById("tk-phone").value)];
   if(rec){ tkShow(rec); }
-  else { tkCurrent = null; tkResult.classList.remove("on"); tkEmpty.classList.add("on"); }
+  else { tkResult.classList.remove("on"); tkEmpty.classList.add("on"); }
 }
 document.getElementById("tk-btn").addEventListener("click", tkTrack);
 document.getElementById("tk-phone").addEventListener("keydown", e => { if(e.key === "Enter") tkTrack(); });
@@ -997,9 +1150,6 @@ function applyLang(l){
   document.getElementById("langBtn").textContent = l === "en" ? "ع" : "EN";
   localStorage.setItem("smaf_lang", l);
   render();
-  renderBgCards();
-  if(bgReader.classList.contains("on")) updatePager();
-  if(tkCurrent) tkShow(tkCurrent, false);
 }
 document.getElementById("langBtn").addEventListener("click", () => applyLang(lang === "en" ? "ar" : "en"));
 applyLang(lang);
